@@ -1,3 +1,4 @@
+#!/bin/sh 
 # COLORS
 RED='\033[4;31m\033[5m'
 CYAN='\033[0;36m'
@@ -47,46 +48,10 @@ function mkcpp()
 }
 
 function genhpp()
-{.templates/.basicHPP > $fileName
-		sed -i "s/CLASSNAME/${(P)i}/g" $fileName
-		echo -e "${PEACH}----------------------------${NC}"
-		echo -e "${PINK} Created a Basic CPP HEADER${NC}"
-		echo -e "${PEACH}----------------------------${NC}"
-	done
-}
-
-function gencpp()
 {
 	if [ $# -lt 1 ]; then
 		return
 	fi
-	for i in {1..$#}; do
-		fileName="${(P)i}.cpp"
-		cat ~/.templates/.basicCPP > $fileName
-		sed -i "s/CLASSNAME/${(P)i}/g" $fileName
-		echo -e "${PEACH}--------------------------${NC}"
-		echo -e "${PINK} Created a Basic CPP FILE${NC}"
-		echo -e "${PEACH}--------------------------${NC}"
-	done
-}
-
-function genbch()
-{
-	if [ $# -lt 1 ]; then
-		return
-	fi
-	for i in {1..$#}; do
-		name=${(P)i}
-		gencpp $name
-		genhpp $name
-	done
-}
-
-function llog()
-{
-	echo -e "${PEACH}------------------------------------------------------------${NC}"
-	printf ${ORANGE}
-	git log | head -5 | tail -4 | hea
 	for i in {1..$#}; do
 		fileName="${(P)i}.hpp"
 		cat ~/.templates/.basicHPP > $fileName
