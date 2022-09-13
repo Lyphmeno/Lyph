@@ -1,0 +1,30 @@
+#include "CLASSNAME.hpp"
+#define LOG 0
+
+CLASSNAME::CLASSNAME()
+{
+	if (LOG == 1)
+		std::cout << "CLASSNAME default constructor called" << std::endl;
+}
+
+CLASSNAME::CLASSNAME(const CLASSNAME &cpy)
+{
+	if (LOG == 1)
+		std::cout << "CLASSNAME copy constructor called" << std::endl;
+	// ! Make copy ! this->thing = cpy->thing
+}
+
+CLASSNAME::~CLASSNAME()
+{
+	if (LOG == 1)
+		std::cout << "CLASSNAME default destructor called" << std::endl;
+}
+
+CLASSNAME &CLASSNAME::operator=(const CLASSNAME &rhs)
+{
+	if (this != &rhs)
+	{
+		// ! Make copy !
+	}
+	return (*this);
+}

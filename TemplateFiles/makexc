@@ -1,0 +1,27 @@
+NAME	=	a.out
+SRC		=	$(shell find . -type f -name "*.c")
+HEADERS	=	$(shell find . -type f -name "*.h")
+OBJ		=	$(patsubst %.c, %.o, $(SRC))
+
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
+
+.PHONY:		all
+all:		$(NAME)
+
+%.o:%.c
+			$(CC) -g -c -o $@ $< $c $(CFLAGS)
+
+$(NAME):	$(OBJ) $(HEADERS) Makefile
+			@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+
+.PHONY:		clean
+clean:
+			@$(RM) $(OBJ)
+
+.PHONY:		fclean
+fclean:		clean
+			@$(RM) $(NAME)
+
+.PHONY:		re
+re:			fclean all

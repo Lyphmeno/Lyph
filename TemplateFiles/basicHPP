@@ -1,0 +1,20 @@
+#pragma once
+
+#include <iostream>
+#include <string>
+
+class CLASSNAME
+{
+	private :
+	public :
+	// COPLIEN
+		CLASSNAME();
+		CLASSNAME(const CLASSNAME &cpy);
+		~CLASSNAME();
+		CLASSNAME &operator=(const CLASSNAME &rhs);
+	// ASSIGNATION CONTRUCTORS
+	// GETTER & SETTER
+	// OPERATORS
+	// METHODS
+	// EXCEPTIONS
+};
