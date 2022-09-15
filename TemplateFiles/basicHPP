@@ -5,16 +5,17 @@
 
 class CLASSNAME
 {
-	private :
-	public :
-	// COPLIEN
-		CLASSNAME();
-		CLASSNAME(const CLASSNAME &cpy);
-		~CLASSNAME();
-		CLASSNAME &operator=(const CLASSNAME &rhs);
-	// ASSIGNATION CONTRUCTORS
-	// GETTER & SETTER
-	// OPERATORS
-	// METHODS
-	// EXCEPTIONS
+private:
+public:
+	// Coplien //
+	CLASSNAME();
+	CLASSNAME(const CLASSNAME &cpy);
+	~CLASSNAME();
+	CLASSNAME &operator=(const CLASSNAME &rhs);
+	// Assignation contructors //
+	// Ooperators //
+	// Getters //
+	// Setters //
+	// Methods //
+	// Exceptions //
 };
