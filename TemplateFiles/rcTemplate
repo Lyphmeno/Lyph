@@ -138,17 +138,17 @@ function fullgit()
 {
     git add -A
     if [ $? -eq 0 ]; then
-        echo -e "${PEACH}------- ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
+        echo -e "${PEACH}### ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
         git commit -m "$*"
-        echo -e "${PEACH}------- ${ORANGE}Commit -> ${GREEN}SUCCESS${NC}"
+        echo -e "${PEACH}### ${ORANGE}Commit -> ${GREEN}SUCCESS${NC}"
 		git push
         if [ $? -eq 0 ]; then
-            echo -e "${PEACH}------- ${ORANGE}Push -> ${GREEN}SUCCESS${NC}"
+            echo -e "${PEACH}### ${ORANGE}Push -> ${GREEN}SUCCESS${NC}"
             llog
         else
-            echo -e "${PEACH}------- ${ORANGE}Push -> ${RED}FAIL${NC}"
+            echo -e "${PEACH}### ${ORANGE}Push -> ${RED}FAIL${NC}"
         fi
     else
-        echo -e "${PEACH}------- ${ORANGE}Add -> ${RED}FAIL${NC}"
+        echo -e "${PEACH}### ${ORANGE}Add -> ${RED}FAIL${NC}"
     fi
 }
