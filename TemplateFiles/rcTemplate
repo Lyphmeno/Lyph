@@ -17,6 +17,7 @@ alias rt='printf "\033c"'
 alias ll='ls -l'
 alias l='ls -la'
 alias dilf='diff -r'
+alias grademe='bash -c "$(curl https://grademe.fr)"'
 	# Compile
 alias cpl='gcc -Wall -Wextra -Werror'
 alias dcpl='rm -rf a.out'
