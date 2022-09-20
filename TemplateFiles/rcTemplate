@@ -12,23 +12,51 @@ GREEN='\033[1;32m'
 NC='\033[0m'
 
 # ALIAS
+	# Basics
+alias rt='printf "\033c"'
 alias ll='ls -l'
 alias l='ls -la'
+alias dilf='diff -r'
+	# Compile
 alias cpl='gcc -Wall -Wextra -Werror'
 alias dcpl='rm -rf a.out'
+alias vgrind='valgrind --leak-check=full'
+	# Git
 alias gits='git status'
 alias gitl='git log'
+	# Makefile
 alias mcl='rt; make fclean'
 alias mre='rt; make re'
-alias vgrind='valgrind --leak-check=full'
-alias rt='printf "\033c"'
-alias lock='/mnt/nfs/homes/hlevi/Lock/lock/lock'
-alias src='source ~/.zshrc'
+	# Specific Dir
 alias zedit='code ~/.zshrc'
 alias kode='code /mnt/nfs/homes/hlevi/42'
-alias dilf='diff -r'
+alias lock='/mnt/nfs/homes/hlevi/Lock/lock/lock'
 
 # FUNCTIONS
+	# Specific Dir
+function upsh()
+{
+	. /mnt/nfs/homes/hlevi/42/Ghub/Usefull/CreateAll.sh
+	if [ $? -eq 0 ]; then
+        echo -e "### ${PEACH}Updating current RC ${GREEN}SUCCEEDED${NC} ###"
+	else
+        echo -e "### ${PEACH}Updating current RC ${GREEN}FAILED${NC} ###"
+	fi
+}
+
+function gupsh()
+{
+	. /mnt/nfs/homes/hlevi/42/Ghub/Usefull/CreateAll.sh
+	if [ $? -eq 0 ]; then
+        echo -e "### ${PEACH}Updating current RC ${GREEN}SUCCEEDED${NC} ###"
+		cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull
+		fullgit $*
+	else
+        echo -e "### ${PEACH}Updating current RC ${GREEN}FAILED${NC} ###"
+	fi
+}	
+
+	# Template Generation
 function mkc()
 {
 	cat ~/.templates/.makexc > Makefile
@@ -89,6 +117,7 @@ function genbch()
 	done
 }
 
+	# Git
 function llog()
 {
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
