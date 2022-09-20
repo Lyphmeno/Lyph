@@ -40,9 +40,9 @@ function upsh()
 	cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull/
 	. /mnt/nfs/homes/hlevi/42/Ghub/Usefull/CreateAll.sh
 	if [ $? -eq 0 ]; then
-        echo -e "### ${PEACH}Updating current RC ${GREEN}SUCCEEDED${NC} ###"
+        echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED ${PEACH}----${NC}"
 	else
-        echo -e "### ${PEACH}Updating current RC ${GREEN}FAILED${NC} ###"
+        echo -e "${PEACH}---- Updating current RC ${GREEN}FAILED ${PEACH}----${NC}"
 	fi
 }
 
@@ -51,11 +51,11 @@ function gupsh()
 	cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull/
 	. /mnt/nfs/homes/hlevi/42/Ghub/Usefull/CreateAll.sh
 	if [ $? -eq 0 ]; then
-        echo -e "### ${PEACH}Updating current RC ${GREEN}SUCCEEDED${NC} ###"
+        echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED${PEACH} ----${NC}"
 		cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull
 		fullgit $*
 	else
-        echo -e "### ${PEACH}Updating current RC ${GREEN}FAILED${NC} ###"
+        echo -e "${PEACH}---- Updating current RC ${GREEN}FAILED${PEACH} ----${NC}"
 	fi
 }	
 
