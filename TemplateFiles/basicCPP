@@ -42,7 +42,7 @@ CLASSNAME &CLASSNAME::operator=(const CLASSNAME &rhs)
 // Setters                 //
 /////////////////////////////
 /////////////////////////////
-// Ooperators              //
+// Operators               //
 /////////////////////////////
 /////////////////////////////
 // Methods                 //

@@ -13,7 +13,7 @@ public:
 	~CLASSNAME();
 	CLASSNAME &operator=(const CLASSNAME &rhs);
 	// Assignation contructors //
-	// Ooperators //
+	// Operators //
 	// Getters //
 	// Setters //
 	// Methods //
