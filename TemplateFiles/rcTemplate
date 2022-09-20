@@ -138,19 +138,17 @@ function fullgit()
 {
     git add -A
     if [ $? -eq 0 ]; then
-        echo -e "${PEACH}---- ${YELLOW}Adding${NC} content to the git repository was ${GREEN}SUCCESSFULL${PEACH} ----${NC}"
+        echo -e "${PEACH}------- ${YELLOW}Add -> ${GREEN}SUCCESS${PEACH} -------${NC}"
         git commit -m "$*"
-        echo -e "${PEACH}---- ${NC}The ${ORANGE}Commit${NC} was ${GREEN}SUCCESSFULL${PEACH} ----${NC}"
+        echo -e "${PEACH}------- ${ORANGE}Commit -> ${GREEN}SUCCESS${PEACH} -------${NC}"
 		git push
         if [ $? -eq 0 ]; then
-            echo -e "${PEACH}---- ${NC}${PURPLE}Pushing${NC} the commited content was ${GREEN}SUCCESSFULL${PEACH} ----${NC}"
+            echo -e "${PEACH}------- ${NC}${PURPLE}Push -> ${GREEN}SUCCESS${PEACH} -------${NC}"
             llog
         else
-            echo -e "${PEACH}---- ${NC}${PURPLE}Pushing${NC} the commited content was a ${RED}FAILURE${PEACH} ----${NC}"
-            echo -e "${PEACH}---- ${NC}The program won't try to ${PURPLE}push${PEACH} ----${NC}"
+            echo -e "${PEACH}------- ${YELLOW}Push -> ${RED}FAIL${PEACH} -------${NC}"
         fi
     else
-        echo -e "${PEACH}---- ${NC}${YELLOW}Adding${NC} content to the git repository was a ${RED}FAILURE${PEACH} ----${NC}"
-        echo -e "${PEACH}---- ${NC}The program won't try to ${ORANGE}commit${NC} or ${PURPLE}push${PEACH} ----${NC}"
+        echo -e "${PEACH}------- ${YELLOW}Add -> ${RED}FAIL${PEACH} -------${NC}"
     fi
 }
