@@ -37,6 +37,7 @@ alias lock='/mnt/nfs/homes/hlevi/Lock/lock/lock'
 	# Specific Dir
 function upsh()
 {
+	cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull/
 	. /mnt/nfs/homes/hlevi/42/Ghub/Usefull/CreateAll.sh
 	if [ $? -eq 0 ]; then
         echo -e "### ${PEACH}Updating current RC ${GREEN}SUCCEEDED${NC} ###"
@@ -47,6 +48,7 @@ function upsh()
 
 function gupsh()
 {
+	cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull/
 	. /mnt/nfs/homes/hlevi/42/Ghub/Usefull/CreateAll.sh
 	if [ $? -eq 0 ]; then
         echo -e "### ${PEACH}Updating current RC ${GREEN}SUCCEEDED${NC} ###"
