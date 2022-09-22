@@ -31,7 +31,8 @@ alias mre='rt; make re'
 	# Specific Dir
 alias zedit='code ~/.zshrc'
 alias uedit='code /mnt/nfs/homes/hlevi/42/Ghub/Usefull'
-alias train='cd /mnt/nfs/homes/hlevi/42/TrainEx; code .'
+alias train='cd /mnt/nfs/homes/hlevi/42/TrainEx'
+alias trainc='cd /mnt/nfs/homes/hlevi/42/TrainEx; code .'
 alias kode='code /mnt/nfs/homes/hlevi/42'
 alias lock='/mnt/nfs/homes/hlevi/Lock/lock/lock'
 
