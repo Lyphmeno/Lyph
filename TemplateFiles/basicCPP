@@ -1,5 +1,4 @@
 #include "CLASSNAME.hpp"
-#define LOG 0
 
 /////////////////////////////
 // Coplien                 //
