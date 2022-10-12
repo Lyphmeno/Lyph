@@ -86,6 +86,9 @@ function mkcpp()
 function fullmkcpp()
 {
 	mkdir inc src
+	mv *.cpp src
+	mv *.hpp inc
+	mv *.tpp inc
 	echo -e "${PEACH}---------------------------${NC}"
 	echo -e "${PINK} Created a CPP Environment${NC}"
 	echo -e "${PEACH}---------------------------${NC}"
@@ -99,6 +102,8 @@ function fullmkcpp()
 function fullmkc()
 {
 	mkdir inc src
+	mv *.c src
+	mv *.h inc
 	echo -e "${PEACH}-------------------------${NC}"
 	echo -e "${PINK} Created a C Environment${NC}"
 	echo -e "${PEACH}-------------------------${NC}"
