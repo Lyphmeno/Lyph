@@ -83,6 +83,32 @@ function mkcpp()
 	echo -e "${PEACH}------------------------${NC}"
 }
 
+function fullmkcpp()
+{
+	mkdir inc src
+	echo -e "${PEACH}---------------------------${NC}"
+	echo -e "${PINK} Created a CPP Environment${NC}"
+	echo -e "${PEACH}---------------------------${NC}"
+	cat ~/.templates/.makexcpp > Makefile
+	sed -i "s/a.out/$1/g" Makefile
+	echo -e "${PEACH}------------------------${NC}"
+	echo -e "${PINK} Created a CPP Makefile${NC}"
+	echo -e "${PEACH}------------------------${NC}"
+}
+
+function fullmkc()
+{
+	mkdir inc src
+	echo -e "${PEACH}-------------------------${NC}"
+	echo -e "${PINK} Created a C Environment${NC}"
+	echo -e "${PEACH}-------------------------${NC}"
+	cat ~/.templates/.makexc > Makefile
+	sed -i "s/a.out/$1/g" Makefile
+	echo -e "${PEACH}----------------------${NC}"
+	echo -e "${PINK} Created a C Makefile${NC}"
+	echo -e "${PEACH}----------------------${NC}"
+}
+
 function genhpp()
 {
 	if [ $# -lt 1 ]; then

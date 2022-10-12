@@ -1,45 +1,58 @@
-NAME	=	a.out
-SRC		=	$(shell find . -type f -name "*.c")
-HEADERS	=	$(shell find . -type f -name "*.h")
-OBJ		=	$(patsubst %.c, %.o, $(SRC))
+NAME		:=	a.out
 
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror
+CC			:=	c++
+FLAGS		:=	-Wall -Wextra -Werror -std=c++98
 
-.PHONY:		all
-all:		$(NAME)
+SRCDIR		:=	src
+SRCEXT		:=	c
+SRC			:=	$(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 
-%.o:%.c
+INCDIR		:=	inc
+INCEXT		:=	h
+HEADERS		:=	$(shell find $(INCDIR) -type f -name *.$(INCEXT))
+
+OBJDIR		:=	objs
+OBJEXT		:=	o
+OBJS		:=	$(subst $(SRCDIR),$(OBJDIR),$(SRC:.$(SRCEXT)=.$(OBJEXT)))
+
+.PHONY: all
+all: $(NAME)
+
+$(NAME):	$(OBJDIR) $(OBJS) $(HEADERS) Makefile
 			@echo -ne '    \033c$(E_BAR)\n'
-			$(CC) $(FLAGS) -g -c -o $@ $< $c 
+			$(CC) $(FLAGS) -o $(NAME) $(OBJS) 
 			@$(eval $(call update_bar))
 
-$(NAME):	$(OBJ) $(HEADERS) Makefile
-			@echo -ne '    \033c$(E_BAR)\n'
-			@$(CC) $(FLAGS) -o $(NAME) $(OBJ)
-			@$(eval $(call update_bar))
-.PHONY:		clean
+$(OBJDIR):
+			@mkdir -p $(OBJDIR)
+
+$(OBJDIR)/%.$(OBJEXT) : 	$(SRCDIR)/%.$(SRCEXT)
+							@echo -ne '    \033c$(E_BAR)\n'
+							@$(CC) $(FLAGS) -c $< -o $(<:.$(SRCEXT)=.$(OBJEXT)) -I $(INCDIR)
+							@mv $(SRCDIR)/*.$(OBJEXT) $@
+							@$(eval $(call update_bar))
+
+.PHONY: re
+re: fclean all
+
+.PHONY: clean
 clean:
-			@$(RM) $(OBJ)
+		@$(RM) -rf $(OBJDIR)
 
-.PHONY:		fclean
-fclean:		clean
-			@$(RM) $(NAME)
+.PHONY: fclean
+fclean: clean
+		@$(RM) -rf $(NAME)
 
-.PHONY:		re
-re:			fclean all
-
-
-#  ---------- PROGRESS BAR ----------
-_STOP		=	\e[0m
-_PINK		=	\033[38;5;223m\e[1m
-_ORANGE		=	\033[38;5;209m\e[1m
-_CREAM		=	\033[38;5;${VAL}m\e[1m
-VAL			=	76
-INDEX		=	2
-BUILD_SIZE	=	$(shell find . -type f -name "*.c"  | wc -l)
-PRC			=	0
-progress	=	0
+#  ---------- PROGRESS BAR ----------  #
+_STOP		:=	\e[0m
+_PINK		:=	\033[38;5;223m\e[1m
+_ORANGE		:=	\033[38;5;209m\e[1m
+_CREAM		:=	\033[38;5;${VAL}m\e[1m
+VAL			:=	76
+INDEX		:=	2
+BUILD_SIZE	:=	$(shell find . -type f -name "*.cpp" | wc -l)
+PRC			:=	0
+progress	:=	0
 
 define update_bar =
     progress	=	$(shell echo "$(INDEX) / ($(BUILD_SIZE) / 20)" | bc -l)
@@ -50,4 +63,3 @@ define update_bar =
 		VAL=$(shell echo $(VAL) + 1 | bc -l)
 	endif
 endef
-#  ---------- PROGRESS BAR ----------
