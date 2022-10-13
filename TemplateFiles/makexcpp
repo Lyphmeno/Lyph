@@ -1,7 +1,7 @@
 NAME		:=	a.out
 
-CC			:=	c++
-FLAGS		:=	-Wall -Wextra -Werror -std=c++98
+CXX			:=	c++
+CXFLAGS		:=	-Wall -Wextra -Werror -std=c++98
 
 SRCDIR		:=	src
 SRCEXT		:=	cpp
@@ -22,7 +22,7 @@ all: $(NAME)
 
 $(NAME):	$(OBJDIR) $(OBJS) $(HEADERS) $(TEMPLATES) Makefile
 			@echo -ne '    \033c$(E_BAR)\n'
-			$(CC) $(FLAGS) -o $(NAME) $(OBJS) 
+			$(CXX) $(CXFLAGS) -o $(NAME) $(OBJS) 
 
 $(OBJDIR):
 			@mkdir $(OBJDIR)
@@ -30,7 +30,7 @@ $(OBJDIR):
 
 $(OBJDIR)/%.$(OBJEXT) : 	$(SRCDIR)/%.$(SRCEXT)
 							@echo -ne '    \033c$(E_BAR)\n'
-							@$(CC) $(FLAGS) -c $< -o $(<:.$(SRCEXT)=.$(OBJEXT)) -I $(INCDIR)
+							@$(CXX) $(CXFLAGS) -c $< -o $(<:.$(SRCEXT)=.$(OBJEXT)) -I $(INCDIR)
 							@mv $(SRCDIR)/*.$(OBJEXT) $@
 							@$(eval $(call update_bar))
 
