@@ -1,7 +1,7 @@
 NAME		:=	a.out
 
-CC			:=	c++
-CFLAGS		:=	-Wall -Wextra -Werror -std=c++98
+CC			:=	gcc
+CFLAGS		:=	-Wall -Wextra -Werror
 
 SRCDIR		:=	src
 SRCEXT		:=	c
