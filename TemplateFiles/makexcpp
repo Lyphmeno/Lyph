@@ -5,13 +5,16 @@ CXFLAGS		:=	-Wall -Wextra -Werror -std=c++98
 
 SRCDIR		:=	src
 SRCEXT		:=	cpp
-SRC			:=	$(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+SRC			:=	
+ALLSRC
 
 INCDIR		:=	inc
 INCEXT		:=	hpp
 TEMPEXT		:=	tpp
-HEADERS		:=	$(shell find $(INCDIR) -type f -name *.$(INCEXT))
-TEMPLATES	:=	$(shell find $(INCDIR) -type f -name *.$(TEMPEXT))
+HEADERS		:=	
+ALLHEADER
+TEMPLATES	:=	
+ALLTEMPLATE
 
 OBJDIR		:=	objs
 OBJEXT		:=	o

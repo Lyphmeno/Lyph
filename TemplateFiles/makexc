@@ -5,11 +5,13 @@ CFLAGS		:=	-Wall -Wextra -Werror
 
 SRCDIR		:=	src
 SRCEXT		:=	c
-SRC			:=	$(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+SRC			:=	
+ALLSRC
 
 INCDIR		:=	inc
 INCEXT		:=	h
-HEADERS		:=	$(shell find $(INCDIR) -type f -name *.$(INCEXT))
+HEADERS		:=	
+ALLHEADER
 
 OBJDIR		:=	objs
 OBJEXT		:=	o
