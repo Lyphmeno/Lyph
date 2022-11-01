@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 
+#define CLASSNAME_LOG 0
+
 class CLASSNAME
 {
 private:

@@ -5,20 +5,20 @@
 /////////////////////////////
 CLASSNAME::CLASSNAME()
 {
-	if (LOG == 1)
+	if (CLASSNAME_LOG == 1)
 		std::cout << "CLASSNAME default constructor called" << std::endl;
 }
 
 CLASSNAME::CLASSNAME(const CLASSNAME &cpy)
 {
-	if (LOG == 1)
+	if (CLASSNAME_LOG == 1)
 		std::cout << "CLASSNAME copy constructor called" << std::endl;
 	// ! Make copy ! this->thing = cpy->thing
 }
 
 CLASSNAME::~CLASSNAME()
 {
-	if (LOG == 1)
+	if (CLASSNAME_LOG == 1)
 		std::cout << "CLASSNAME default destructor called" << std::endl;
 }
 
