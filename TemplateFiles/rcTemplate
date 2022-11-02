@@ -38,6 +38,18 @@ alias lock='/mnt/nfs/homes/hlevi/Lock/lock/lock'
 
 # FUNCTIONS
 	# Specific Dir
+function argx()
+{
+	ARG="$1"
+	mkdir rendu/$ARG
+	touch rendu/$ARG/$ARG.c
+}
+
+function cplarg()
+{
+	gcc -Wall -Wextra -Werror rendu/$ARG/$ARG.c
+}
+
 function upsh()
 {
 	cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull/
