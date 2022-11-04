@@ -53,23 +53,24 @@ function cplarg()
 
 function upsh()
 {
+	oldir=$(echo $PWD)
 	cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull/
 	rt
 	. /mnt/nfs/homes/hlevi/42/Ghub/Usefull/CreateAll.sh
-	cd -
 	if [ $? -eq 0 ]; then
         echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED ${PEACH}----${NC}"
 	else
         echo -e "${PEACH}---- Updating current RC ${GREEN}FAILED ${PEACH}----${NC}"
 	fi
+	cd "${oldir}"
 }
 
 function gupsh()
 {
+	oldir=$(echo $PWD)
 	cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull/
 	rt
 	. /mnt/nfs/homes/hlevi/42/Ghub/Usefull/CreateAll.sh
-	cd -
 	if [ $? -eq 0 ]; then
         echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED${PEACH} ----${NC}"
 		cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull
@@ -77,7 +78,9 @@ function gupsh()
 	else
         echo -e "${PEACH}---- Updating current RC ${GREEN}FAILED${PEACH} ----${NC}"
 	fi
-}	
+	cd "${oldir}"
+}
+
 
 	# Template Generation
 function mkc()
