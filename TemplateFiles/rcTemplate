@@ -35,6 +35,7 @@ alias train='cd /mnt/nfs/homes/hlevi/42/TrainEx'
 alias trainc='cd /mnt/nfs/homes/hlevi/42/TrainEx; code .'
 alias kode='code /mnt/nfs/homes/hlevi/42'
 alias lock='/mnt/nfs/homes/hlevi/Lock/lock/lock'
+alias norm='rt; norminette'
 
 # FUNCTIONS
 	# Specific Dir
