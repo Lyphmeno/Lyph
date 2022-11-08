@@ -219,7 +219,7 @@ function gitbr()
 {
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 	printf ${ORANGE}
-	git branch
+	git branch $*
 	printf ${NC}
     echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
