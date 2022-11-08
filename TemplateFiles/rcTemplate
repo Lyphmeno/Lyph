@@ -197,6 +197,15 @@ function genbch()
 }
 
 	# Git
+function gcl()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git clone "git@github.com:Lyfmeno/$1.git"
+	printf ${NC}
+    echo -e "${PEACH}------------------------------------------------------------${NC}"
+}
+
 function gitc()
 {
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
