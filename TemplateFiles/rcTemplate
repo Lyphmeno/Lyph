@@ -197,7 +197,7 @@ function genbch()
 }
 
 	# Git
-function gcl()
+function gclyf()
 {
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 	printf ${ORANGE}
