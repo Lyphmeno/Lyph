@@ -1,5 +1,11 @@
-#!/bin/sh 
-# Adding all the templates files 
+#!/bin/sh
+# Creating files
+mkdir -p ~/.templates
+touch ~/.templates/.basicHPP
+touch ~/.templates/.basicCPP
+touch ~/.templates/.makexc
+touch ~/.templates/.makexcpp
+# Adding all the templates files
 cat TemplateFiles/basicHPP > ~/.templates/.basicHPP
 cat TemplateFiles/basicCPP > ~/.templates/.basicCPP
 cat TemplateFiles/makexc > ~/.templates/.makexc
