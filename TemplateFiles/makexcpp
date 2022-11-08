@@ -5,15 +5,15 @@ CXFLAGS		:=	-Wall -Wextra -Werror -std=c++98
 
 SRCDIR		:=	src
 SRCEXT		:=	cpp
-SRC			:=	
+SRC			:=	\
 ALLSRC
 
 INCDIR		:=	inc
 INCEXT		:=	hpp
 TEMPEXT		:=	tpp
-HEADERS		:=	
+HEADERS		:=	\
 ALLHEADER
-TEMPLATES	:=	
+TEMPLATES	:=	\
 ALLTEMPLATE
 
 OBJDIR		:=	objs

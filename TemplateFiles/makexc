@@ -5,12 +5,12 @@ CFLAGS		:=	-Wall -Wextra -Werror
 
 SRCDIR		:=	src
 SRCEXT		:=	c
-SRC			:=	
+SRC			:=	\
 ALLSRC
 
 INCDIR		:=	inc
 INCEXT		:=	h
-HEADERS		:=	
+HEADERS		:=	\
 ALLHEADER
 
 OBJDIR		:=	objs
