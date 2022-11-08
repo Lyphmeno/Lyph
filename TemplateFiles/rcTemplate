@@ -196,7 +196,6 @@ function genbch()
 	done
 }
 
-
 	# Git
 function gclyf()
 {
