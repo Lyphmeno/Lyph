@@ -258,8 +258,8 @@ function fullgit()
 function bnorm()
 {
 	rt
+	echo -e "${PINK}Be carefull this command doesn't show norm error for COMMENT !${NC}"
 	echo -e "${ORANGE}----------------------------------------------------------------${NC}"
-	echo -e "${PINK}Be carefull this command doesn't show norm error for COMMENT !\n\n${NC}"
 	printf ${PEACH}
 	norminette $1 | grep -v COMMENT | grep -v OK!
     echo -e "${ORANGE}----------------------------------------------------------------${NC}"
