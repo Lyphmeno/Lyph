@@ -260,6 +260,6 @@ function bnorm()
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 	echo -e "${PINK}Be carefull this command doesn't show norm error for COMMENT !${NC}"
 	printf ${ORANGE}
-	norminette $1 | grep -v COMMENT 
+	rt; norminette $1 | grep -v "COMMENT" | grep -v "OK!"
     echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
