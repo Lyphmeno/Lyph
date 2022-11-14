@@ -21,7 +21,8 @@ alias grademe='bash -c "$(curl https://grademe.fr)"'
 	# Compile
 alias cpl='gcc -Wall -Wextra -Werror'
 alias dcpl='rm -rf a.out'
-alias vgrind='valgrind --leak-check=full'
+alias vgrind='rt; valgrind --leak-check=full'
+alias vgrindf='rt; valgrind --leak-check=full --show-leaks-kind=all'
 	# Git
 alias gits='git status'
 alias gitl='git log'
