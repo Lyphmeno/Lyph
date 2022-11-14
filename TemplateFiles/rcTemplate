@@ -22,7 +22,7 @@ alias grademe='bash -c "$(curl https://grademe.fr)"'
 alias cpl='gcc -Wall -Wextra -Werror'
 alias dcpl='rm -rf a.out'
 alias vgrind='rt; valgrind --leak-check=full'
-alias vgrindf='rt; valgrind --leak-check=full --show-leaks-kind=all'
+alias vgrindf='rt; valgrind --leak-check=full --show-leak-kinds=all'
 	# Git
 alias gits='git status'
 alias gitl='git log'
