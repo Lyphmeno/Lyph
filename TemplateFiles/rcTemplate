@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh
 # COLORS
 RED='\033[4;31m\033[5m'
 CYAN='\033[0;36m'
@@ -10,6 +10,7 @@ PEACH='\033[38;5;223m\e[1m'
 YELLOW='\033[38;5;226m\e[1m'
 GREEN='\033[1;32m'
 NC='\033[0m'
+mysh=`echo $SHELL | cut -d/ -f3`
 
 # ALIAS
 	# Basics
@@ -21,25 +22,34 @@ alias grademe='bash -c "$(curl https://grademe.fr)"'
 	# Compile
 alias cpl='gcc -Wall -Wextra -Werror'
 alias dcpl='rm -rf a.out'
-alias vgrind='rt; valgrind --leak-check=full'
-alias vgrindf='rt; valgrind --leak-check=full --show-leak-kinds=all'
+alias vgrind='rt; valgrind --leak-check=full --show-leak-kinds=all'
 	# Git
 alias gits='git status'
 alias gitl='git log'
 	# Makefile
 alias mcl='rt; make fclean'
 alias mre='rt; make re'
-	# Specific Dir
-alias zedit='code ~/.zshrc'
-alias uedit='code /mnt/nfs/homes/hlevi/42/Ghub/Usefull'
-alias train='cd /mnt/nfs/homes/hlevi/42/TrainEx'
-alias trainc='cd /mnt/nfs/homes/hlevi/42/TrainEx; code .'
-alias kode='code /mnt/nfs/homes/hlevi/42'
-alias lock='/mnt/nfs/homes/hlevi/Lock/lock/lock'
-alias norm='rt; norminette'
 
 # FUNCTIONS
 	# Specific Dir
+function zedit()
+{
+    echo -e "${PEACH}---- Opening rc file ----${NC}"
+	code ~/."$mysh"rc
+}
+
+function uedit()
+{
+    echo -e "${PEACH}---- Opening Usefull file ----${NC}"
+	code $HOME/42/Ghub/Usefull
+}
+
+function kode()
+{
+    echo -e "${PEACH}---- Opening 42 Dir ----${NC}"
+	code $HOME/42
+}
+
 function argx()
 {
 	ARG="$1"
@@ -55,9 +65,9 @@ function cplarg()
 function upsh()
 {
 	oldir=$(echo $PWD)
-	cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull/
+	cd $HOME/42/Ghub/Usefull/
 	rt
-	. /mnt/nfs/homes/hlevi/42/Ghub/Usefull/CreateAll.sh
+	. $HOME/42/Ghub/Usefull/CreateAll.sh
 	if [ $? -eq 0 ]; then
         echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED ${PEACH}----${NC}"
 	else
@@ -69,12 +79,12 @@ function upsh()
 function gupsh()
 {
 	oldir=$(echo $PWD)
-	cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull/
+	cd $HOME/42/Ghub/Usefull/
 	rt
-	. /mnt/nfs/homes/hlevi/42/Ghub/Usefull/CreateAll.sh
+	. $HOME/42/Ghub/Usefull/CreateAll.sh
 	if [ $? -eq 0 ]; then
         echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED${PEACH} ----${NC}"
-		cd /mnt/nfs/homes/hlevi/42/Ghub/Usefull
+		cd $HOME/42/Ghub/Usefull
 		fullgit $*
 	else
         echo -e "${PEACH}---- Updating current RC ${GREEN}FAILED${PEACH} ----${NC}"
@@ -96,7 +106,7 @@ function mkc()
 function mksrc()
 {
 	printf '%s\n' "$(find . -type f -name "*.c" | grep -v "MLX" | sed -e "s/$/\\\/g" | sed -e "s/^/\t\t\t\t/g" )" | 
-	sed -e '/ALLSRC/{ r /dev/stdin' -e 'd; }' /mnt/nfs/homes/hlevi/.templates/.makexc > Makefile.temp &&
+	sed -e '/ALLSRC/{ r /dev/stdin' -e 'd; }' $HOME/.templates/.makexc > Makefile.temp &&
 	printf '%s\n' "$(find . -type f -name "*.h" | grep -v "MLX" | sed -e "s/$/\\\/g" | sed -e "s/^/\t\t\t\t/g" )" | 
 	sed -e '/ALLHEADER/{ r /dev/stdin' -e 'd; }' Makefile.tmp > Makefile && rm Makefile.tmp
 	echo -e "${PEACH}----------------------------------${NC}"
@@ -107,7 +117,7 @@ function mksrc()
 function mksrcpp()
 {
 	printf '%s\n' "$(find . -type f -name "*.cpp" | grep -v "MLX" | sed -e "s/$/\\\/g" | sed -e "s/^/\t\t\t\t/g" )" | 
-	sed -e '/ALLSRC/{ r /dev/stdin' -e 'd; }' /mnt/nfs/homes/hlevi/.templates/.makexcpp > Makefile.temp &&
+	sed -e '/ALLSRC/{ r /dev/stdin' -e 'd; }' $HOME/.templates/.makexcpp > Makefile.temp &&
 	printf '%s\n' "$(find . -type f -name "*.hpp" | grep -v "MLX" | sed -e "s/$/\\\/g" | sed -e "s/^/\t\t\t\t/g" )" | 
 	sed -e '/ALLHEADER/{ r /dev/stdin' -e 'd; }' Makefile.tmp > Makefile && rm Makefile.tmp
 	echo -e "${PEACH}-------------------------------------------${NC}"

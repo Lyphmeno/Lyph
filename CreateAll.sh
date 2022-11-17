@@ -1,4 +1,5 @@
 #!/bin/sh
+mysh=`echo $SHELL | cut -d/ -f3`
 # Creating files
 mkdir -p ~/.templates
 touch ~/.templates/.basicHPP
@@ -13,5 +14,5 @@ cat TemplateFiles/makexcpp > ~/.templates/.makexcpp
 
 # Writting the rc config file 
 unalias -a
-cat TemplateFiles/rcTemplate > ~/.zshrc
-. ~/.zshrc
+cat TemplateFiles/rcTemplate > ~/."$mysh"rc
+. ~/."$mysh"rc
