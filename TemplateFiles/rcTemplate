@@ -20,7 +20,7 @@ alias l='ls -la'
 alias dilf='diff -r'
 alias grademe='bash -c "$(curl https://grademe.fr)"'
 	# Compile
-alias cpl='gcc -Wall -Wextra -Werror'
+alias cpl='gcc -Wall -Wextra -Werror -g'
 alias dcpl='rm -rf a.out'
 alias vgrind='rt; valgrind --leak-check=full --show-leak-kinds=all'
 	# Git
