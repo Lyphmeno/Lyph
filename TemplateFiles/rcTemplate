@@ -37,6 +37,16 @@ alias mre='rt; make re'
 
 # FUNCTIONS
 	# Specific Dir
+function vedit()
+{	
+    echo -e "${PEACH}---- Opening rc file ----${NC}"
+	if alias nvim >/dev/null 2>&1; then
+		nvim ~/.var/app/io.neovim.nvim/config/nvim/init.vim
+	else
+		nvim ~/.config/nvim/init,vim
+	fi
+}
+
 function zedit()
 {
     echo -e "${PEACH}---- Opening rc file ----${NC}"
