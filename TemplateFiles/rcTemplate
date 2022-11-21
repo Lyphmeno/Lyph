@@ -19,7 +19,11 @@ alias ll='ls -l'
 alias l='ls -la'
 alias dilf='diff -r'
 alias grademe='bash -c "$(curl https://grademe.fr)"'
-alias nvim='flatpak run io.neovim.nvim'
+	# nvim alias if needed
+if ! command -v nvim &> /dev/null
+then
+	alias nvim='flatpak run io.neovim.nvim'
+fi 
 	# Compile
 alias cpl='gcc -Wall -Wextra -Werror -g'
 alias dcpl='rm -rf a.out'
@@ -36,19 +40,19 @@ alias mre='rt; make re'
 function zedit()
 {
     echo -e "${PEACH}---- Opening rc file ----${NC}"
-	code ~/."$mysh"rc
+	nvim ~/."$mysh"rc
 }
 
 function uedit()
 {
     echo -e "${PEACH}---- Opening Usefull file ----${NC}"
-	code $HOME/42/Ghub/Usefull
+	nvim $HOME/42/Ghub/Usefull
 }
 
 function kode()
 {
     echo -e "${PEACH}---- Opening 42 Dir ----${NC}"
-	code $HOME/42
+	nvim $HOME/42
 }
 
 function argx()
