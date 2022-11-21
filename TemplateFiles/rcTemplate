@@ -19,6 +19,7 @@ alias ll='ls -l'
 alias l='ls -la'
 alias dilf='diff -r'
 alias grademe='bash -c "$(curl https://grademe.fr)"'
+alias nvim='flatpak run io.neovim.nvim'
 	# Compile
 alias cpl='gcc -Wall -Wextra -Werror -g'
 alias dcpl='rm -rf a.out'
