@@ -1,0 +1,58 @@
+" Setting up dir for plugins
+call plug#begin('~/.vim/plugged')
+
+" Auto-Completion
+Plug 'neoclide/coc.nvim', {'branch':'release'}
+" Color Scheme
+Plug 'sainnhe/everforest'
+Plug 'sainnhe/gruvbox-material'
+Plug 'morhetz/gruvbox'
+" Language
+Plug 'sheerun/vim-polyglot'
+" NerdTree
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+" Window navigator
+Plug 'christoomey/vim-tmux-navigator'
+
+call plug#end()
+
+" Set basic
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set smarttab
+set encoding=utf-8
+set wrap
+set number
+set relativenumber
+set	updatetime=300
+set signcolumn=yes
+set nocompatible
+set background=dark
+set t_Co=256
+set cursorline
+set nobackup
+set smartcase
+
+" Gruvbox-Material Option
+let g:gruvbox_material_background = 'soft'
+let g:gruvbox_material_foreground = 'material'
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_enable_italic = 1
+colorscheme gruvbox-material
+
+" NERDTREE Parameters
+let g:NERDTreeGitStatusWithFlags = 1
+let g:NERDTreeIgnore = ['^node_modules$']
+"       Sync open file 
+
+
+vmap ++ <plug>NERDCommenterToggle
+nmap ++ <plug>NERDCommenterToggle
+nmap <C-n> :NERDTreeToggle<CR>
