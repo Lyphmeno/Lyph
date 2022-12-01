@@ -19,6 +19,10 @@ alias ll='ls -l'
 alias l='ls -la'
 alias dilf='diff -r'
 alias grademe='bash -c "$(curl https://grademe.fr)"'
+if ! command -v nvim &> /dev/null
+then
+	alias nvim='flatpak run io.neovim.nvim'
+fi
 alias tmux='env TERM=screen-256color tmux'
 	# Compile
 alias cpl='gcc -Wall -Wextra -Werror -g'
@@ -36,25 +40,25 @@ alias mre='rt; make re'
 function vedit()
 {	
     echo -e "${PEACH}---- Opening rc file ----${NC}"
-	vim ~/.vimrc
+	nvim ~/.vimrc
 }
 
 function zedit()
 {
     echo -e "${PEACH}---- Opening rc file ----${NC}"
-	vim ~/."$mysh"rc
+	nvim ~/."$mysh"rc
 }
 
 function uedit()
 {
     echo -e "${PEACH}---- Opening Usefull file ----${NC}"
-	vim $HOME/42/Ghub/Usefull
+	nvim $HOME/42/Ghub/Usefull
 }
 
 function kode()
 {
     echo -e "${PEACH}---- Opening 42 Dir ----${NC}"
-	vim $HOME/42
+	nvim $HOME/42
 }
 
 function argx()
