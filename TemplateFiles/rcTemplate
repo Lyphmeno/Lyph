@@ -40,7 +40,7 @@ alias mre='rt; make re'
 function vedit()
 {	
     echo -e "${PEACH}---- Opening rc file ----${NC}"
-	nvim ~/.vimrc
+	nvim ~/.config/nvim
 }
 
 function zedit()
