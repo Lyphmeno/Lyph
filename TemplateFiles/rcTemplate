@@ -15,14 +15,10 @@ mysh=`echo $SHELL | cut -d/ -f3`
 # ALIAS
 	# Basics
 alias rt='printf "\033c"'
-alias ll='ls -l'
-alias l='ls -la'
+alias ll='ls -l --color=auto'
+alias l='ls -la --color=auto'
 alias dilf='diff -r'
 alias grademe='bash -c "$(curl https://grademe.fr)"'
-if ! command -v nvim &> /dev/null
-then
-	alias nvim='flatpak run io.neovim.nvim'
-fi
 alias tmux='env TERM=screen-256color tmux'
 	# Compile
 alias cpl='gcc -Wall -Wextra -Werror -g'
