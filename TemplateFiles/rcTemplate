@@ -219,7 +219,7 @@ function gclyf()
 {
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 	printf ${ORANGE}
-	git clone "git@github.com:Lyfmeno/$1.git"
+	git clone "git@github.com:Lyfmeno/$1.git" --recursive
 	printf ${NC}
     echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
