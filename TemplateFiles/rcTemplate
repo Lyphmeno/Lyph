@@ -106,6 +106,36 @@ gupsh()
 	cd "${oldir}"
 }
 
+uplym()
+{
+	oldir=$(echo $PWD)
+	cd $HOME/42/Ghub/Lym/
+	rt
+	. $HOME/42/Ghub/Lym/Setup.sh
+	if [ $? -eq 0 ]; then
+        echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED ${PEACH}----${NC}"
+	else
+        echo -e "${PEACH}---- Updating current RC ${RED}FAILED ${PEACH}----${NC}"
+	fi
+	cd "${oldir}"
+}
+
+guplym()
+{
+	oldir=$(echo $PWD)
+	cd $HOME/42/Ghub/Lym/
+	rt
+	. $HOME/42/Ghub/Lym/Setup.sh
+	if [ $? -eq 0 ]; then
+        echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED${PEACH} ----${NC}"
+		cd $HOME/42/Ghub/Lym/
+		fullgit $*
+	else
+        echo -e "${PEACH}---- Updating current RC ${RED}FAILED${PEACH} ----${NC}"
+	fi
+	cd "${oldir}"
+}
+
 
 	# Template Generation
 mkc()
