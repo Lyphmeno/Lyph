@@ -1,4 +1,5 @@
 #!/bin/sh
+. $HOME/.brewconfig.zsh
 # COLORS
 RED='\033[4;31m\033[5m'
 CYAN='\033[0;36m'
@@ -33,43 +34,49 @@ alias mre='rt; make re'
 
 # FUNCTIONS
 	# Specific Dir
-function vedit()
+ledit()
 {	
-    echo -e "${PEACH}---- Opening rc file ----${NC}"
+    echo -e "${PEACH}---- Opening Lym nvim file ----${NC}"
+	nvim ~/42/Ghub/Lym/nvim
+}
+
+vedit()
+{	
+    echo -e "${PEACH}---- Opening ~/.config/nivm file ----${NC}"
 	nvim ~/.config/nvim
 }
 
-function zedit()
+zedit()
 {
-    echo -e "${PEACH}---- Opening rc file ----${NC}"
+    echo -e "${PEACH}---- Opening .rc file ----${NC}"
 	nvim ~/."$mysh"rc
 }
 
-function uedit()
+uedit()
 {
     echo -e "${PEACH}---- Opening Usefull file ----${NC}"
 	nvim $HOME/42/Ghub/Usefull
 }
 
-function kode()
+kode()
 {
     echo -e "${PEACH}---- Opening 42 Dir ----${NC}"
 	nvim $HOME/42
 }
 
-function argx()
+argx()
 {
 	ARG="$1"
 	mkdir rendu/$ARG
 	touch rendu/$ARG/$ARG.c
 }
 
-function cplarg()
+cplarg()
 {
 	gcc -Wall -Wextra -Werror rendu/$ARG/$ARG.c
 }
 
-function upsh()
+upsh()
 {
 	oldir=$(echo $PWD)
 	cd $HOME/42/Ghub/Usefull/
@@ -78,12 +85,12 @@ function upsh()
 	if [ $? -eq 0 ]; then
         echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED ${PEACH}----${NC}"
 	else
-        echo -e "${PEACH}---- Updating current RC ${GREEN}FAILED ${PEACH}----${NC}"
+        echo -e "${PEACH}---- Updating current RC ${RED}FAILED ${PEACH}----${NC}"
 	fi
 	cd "${oldir}"
 }
 
-function gupsh()
+gupsh()
 {
 	oldir=$(echo $PWD)
 	cd $HOME/42/Ghub/Usefull/
@@ -94,14 +101,14 @@ function gupsh()
 		cd $HOME/42/Ghub/Usefull
 		fullgit $*
 	else
-        echo -e "${PEACH}---- Updating current RC ${GREEN}FAILED${PEACH} ----${NC}"
+        echo -e "${PEACH}---- Updating current RC ${RED}FAILED${PEACH} ----${NC}"
 	fi
 	cd "${oldir}"
 }
 
 
 	# Template Generation
-function mkc()
+mkc()
 {
 	cat ~/.templates/.makexc > Makefile
 	sed -i "s/a.out/$1/g" Makefile
@@ -110,7 +117,7 @@ function mkc()
 	echo -e "${PEACH}-----------------------${NC}"
 }
 
-function mksrc()
+mksrc()
 {
 	printf '%s\n' "$(find . -type f -name "*.c" | grep -v "MLX" | sed -e "s/$/\\\/g" | sed -e "s/^/\t\t\t\t/g" )" | 
 	sed -e '/ALLSRC/{ r /dev/stdin' -e 'd; }' $HOME/.templates/.makexc > Makefile.temp &&
@@ -121,7 +128,7 @@ function mksrc()
 	echo -e "${PEACH}----------------------------------${NC}"
 }
 
-function mksrcpp()
+mksrcpp()
 {
 	printf '%s\n' "$(find . -type f -name "*.cpp" | grep -v "MLX" | sed -e "s/$/\\\/g" | sed -e "s/^/\t\t\t\t/g" )" | 
 	sed -e '/ALLSRC/{ r /dev/stdin' -e 'd; }' $HOME/.templates/.makexcpp > Makefile.temp &&
@@ -132,7 +139,7 @@ function mksrcpp()
 	echo -e "${PEACH}-------------------------------------------${NC}"
 }
 
-function mkcpp()
+mkcpp()
 {
 	cat ~/.templates/.makexcpp > Makefile
 	sed -i "s/a.out/$1/g" Makefile
@@ -141,7 +148,7 @@ function mkcpp()
 	echo -e "${PEACH}------------------------${NC}"
 }
 
-function fullmkcpp()
+fullmkcpp()
 {
 	mkdir inc src
 	mv *.cpp src
@@ -157,7 +164,7 @@ function fullmkcpp()
 	echo -e "${PEACH}------------------------${NC}"
 }
 
-function fullmkc()
+fullmkc()
 {
 	mkdir inc src
 	mv *.c src
@@ -172,7 +179,7 @@ function fullmkc()
 	echo -e "${PEACH}----------------------${NC}"
 }
 
-function genhpp()
+genhpp()
 {
 	if [ $# -lt 1 ]; then
 		return
@@ -187,7 +194,7 @@ function genhpp()
 	done
 }
 
-function gencpp()
+gencpp()
 {
 	if [ $# -lt 1 ]; then
 		return
@@ -202,7 +209,7 @@ function gencpp()
 	done
 }
 
-function genbch()
+genbch()
 {
 	if [ $# -lt 1 ]; then
 		return
@@ -215,7 +222,7 @@ function genbch()
 }
 
 	# Git
-function gclyf()
+gclyf()
 {
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 	printf ${ORANGE}
@@ -224,7 +231,7 @@ function gclyf()
     echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
 
-function gitc()
+gitc()
 {
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 	printf ${ORANGE}
@@ -233,7 +240,7 @@ function gitc()
     echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
 
-function gitbr()
+gitbr()
 {
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 	printf ${ORANGE}
@@ -242,7 +249,7 @@ function gitbr()
     echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
 
-function llog()
+llog()
 {
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 	printf ${ORANGE}
@@ -253,7 +260,7 @@ function llog()
     echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
 
-function fullgit()
+fullgit()
 {
     git add -A
     if [ $? -eq 0 ]; then
@@ -273,10 +280,10 @@ function fullgit()
 }
 
 	# Random
-function bnorm()
+bnorm()
 {
 	rt
-	echo -e "${PINK}Be carefull this command doesn't show norm error for COMMENT !${NC}"
+	echo -e "${PINK}Be carefull this command does not show norm error for COMMENT !${NC}"
 	echo -e "${ORANGE}----------------------------------------------------------------${NC}"
 	printf ${PEACH}
 	norminette $1 | grep -v COMMENT | grep -v OK!

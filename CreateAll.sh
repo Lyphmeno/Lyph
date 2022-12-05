@@ -1,6 +1,7 @@
 #!/bin/sh
 mysh=`echo $SHELL | cut -d/ -f3`
 # Creating files
+mkdir -p ~/.templates
 touch ~/.templates/.basicHPP
 touch ~/.templates/.basicCPP
 touch ~/.templates/.makexc
