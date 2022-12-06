@@ -37,43 +37,34 @@ alias mre='rt; make re'
 ledit()
 {	
     echo -e "${PEACH}---- Opening Lym nvim file ----${NC}"
-	nvim ~/42/Ghub/Lym/nvim
+	cd ~/42/Ghub/Lym/nvim
+	nvim .
 }
 
 vedit()
 {	
     echo -e "${PEACH}---- Opening ~/.config/nivm file ----${NC}"
-	nvim ~/.config/nvim
+	cd ~/.config/nvim
+	nvim .
 }
 
 zedit()
 {
     echo -e "${PEACH}---- Opening .rc file ----${NC}"
-	nvim ~/."$mysh"rc
+	cd ~/."$mysh"rc
+	nvim .
 }
 
 uedit()
 {
     echo -e "${PEACH}---- Opening Usefull file ----${NC}"
-	nvim $HOME/42/Ghub/Usefull
+	cd $HOME/42/Ghub/Usefull
+	nvim .
 }
 
 kode()
 {
-    echo -e "${PEACH}---- Opening 42 Dir ----${NC}"
-	nvim $HOME/42
-}
-
-argx()
-{
-	ARG="$1"
-	mkdir rendu/$ARG
-	touch rendu/$ARG/$ARG.c
-}
-
-cplarg()
-{
-	gcc -Wall -Wextra -Werror rendu/$ARG/$ARG.c
+	nvim .
 }
 
 upsh()
