@@ -14,5 +14,12 @@ cat TemplateFiles/makexcpp > ~/.templates/.makexcpp
 
 # Writting the rc config file 
 unalias -a
-cat TemplateFiles/rcTemplate > ~/."$mysh"rc
+while true; do
+    read -p "Do you wish to add the brew source ? [Y/N]" yn
+    case $yn in
+        [Yy]* ) cat TemplateFiles/rcTemplatebrew > ~/."$mysh"rc; break;;
+        [Nn]* ) cat TemplateFiles/rcTemplate > ~/."$mysh"rc ; exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 . ~/."$mysh"rc
