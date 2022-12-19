@@ -24,7 +24,7 @@ alias tmux='env TERM=screen-256color tmux'
 #	 Compile
 alias cpl='gcc -Wall -Wextra -Werror -g'
 alias dcpl='rm -rf a.out'
-alias vgrind='rt; valgrind --leak-check=full --show-leak-kinds=all'
+alias vgrind='valgrind --leak-check=full --show-leak-kinds=all'
 # 	Git
 alias gits='git fetch origin; git status'
 alias gitl='git log'
