@@ -1,5 +1,4 @@
 #!/bin/sh
-# . $HOME/.brewconfig.zsh
 # COLORS
 RED='\033[4;31m\033[5m'
 CYAN='\033[0;36m'

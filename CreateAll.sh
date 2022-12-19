@@ -16,9 +16,10 @@ cat TemplateFiles/makexcpp > ~/.templates/.makexcpp
 unalias -a
 while true; do
     read -p "Do you wish to add the brew source ? [Y/N]" yn
+    cat TemplateFiles/rcTemplate > ~/."$mysh"rc
     case $yn in
-        [Yy]* ) cat TemplateFiles/rcTemplatebrew > ~/."$mysh"rc; break;;
-        [Nn]* ) cat TemplateFiles/rcTemplate > ~/."$mysh"rc ; exit;;
+        [Yy]* ) echo ". \$HOME/.brewconfig.zsh" >> ~/."$mysh"rc | echo "Added source for Brew" ; break;;
+        [Nn]* ) echo "No source Added for brew" ; exit;;
         * ) echo "Please answer yes or no.";;
     esac
 done
