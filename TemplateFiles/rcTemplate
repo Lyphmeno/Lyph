@@ -36,8 +36,8 @@ alias mre='rt; make re'
 ledit()
 {	
 	echo -e "${PEACH}---- Opening Lym nvim file ----${NC}"
-	cd ~/42/Ghub/Lym/nvim
-	nvim .
+	cd ~/42/Ghub/Lym/
+	nvim nvim
 }
 
 vedit()
