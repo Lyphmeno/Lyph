@@ -23,4 +23,3 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
-. ~/."$mysh"rc

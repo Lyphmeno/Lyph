@@ -50,8 +50,7 @@ vedit()
 zedit()
 {
 	echo -e "${PEACH}---- Opening .rc file ----${NC}"
-	cd ~/."$mysh"rc
-	nvim .
+	nvim ~/."$mysh"rc
 }
 
 uedit()
