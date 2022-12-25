@@ -1,4 +1,6 @@
 #!/bin/sh
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
 # COLORS
 RED='\033[4;31m\033[5m'
 CYAN='\033[0;36m'
