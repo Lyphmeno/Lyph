@@ -56,7 +56,7 @@ _ORANGE		:=	\033[38;5;209m\e[1m
 VAL			:=	76
 _CREAM		:=	\033[38;5;${VAL}m\e[1m
 INDEX		:=	1
-BUILD_SIZE	:=	$(shell find $(SRCDIR) -type f -name "*.c" | wc -l)
+BUILD_SIZE	:=	$(shell find $(SRCDIR) -type f -name "*.cpp" | wc -l)
 PRC			:=	$(shell echo "$(INDEX) / $(BUILD_SIZE) * 100" | bc -l)
 progress	:=	$(shell echo "$(INDEX) / ($(BUILD_SIZE) / 20)" | bc -l)
 
