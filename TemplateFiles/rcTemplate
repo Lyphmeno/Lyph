@@ -1,10 +1,4 @@
 #!/bin/sh
-if [ -t 1 ]; then
-	bind 'TAB:menu-complete'
-	bind 'set show-all-if-ambiguous on'
-	bind 'set completion-ignore-case on'
-	bind 'set menu-complete-display-prefix on'
-fi
 # COLORS
 RED='\033[4;31m\033[5m'
 CYAN='\033[0;36m'
@@ -25,10 +19,8 @@ alias ll='ls -l --color=auto'
 alias l='ls -la --color=auto'
 alias dilf='diff -r'
 alias grademe='bash -c "$(curl https://grademe.fr)"'
-alias tmux='env TERM=screen-256color tmux'
 #	 Compile
 alias cpl='gcc -Wall -Wextra -Werror -g'
-alias dcpl='rm -rf a.out'
 alias vgrind='valgrind --leak-check=full --show-leak-kinds=all'
 # 	Git
 alias gits='git fetch origin; git status'
@@ -269,6 +261,15 @@ gitbr()
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 	printf ${ORANGE}
 	git branch $*
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+}
+
+gitbra()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git branch -a $*
 	printf ${NC}
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 }

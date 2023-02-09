@@ -13,8 +13,6 @@ INCEXT		:=	hpp
 TEMPEXT		:=	tpp
 HEADERS		:=	\
 ALLHEADER
-TEMPLATES	:=	\
-ALLTEMPLATE
 
 OBJDIR		:=	objs
 OBJSUBDIR	:=	$(shell find $(SRCDIR) -type d | cut -d/ -f2 | awk 'NR>1')
