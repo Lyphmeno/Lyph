@@ -1,7 +1,8 @@
 
 # USEFULL 
 
-This repository is a save of all the aliases and functions I like to have on my linux. From git function to cpp or hpp generator, this file help me a lot when I need to setup a new machine.
+This repository is a save of all the aliases and functions I like to have on my linux. From git function to cpp or hpp generator, this file help me a lot when I need to setup a new machine.\
+The program should work on any `.rc` file type.
 ## Installation
 
 Since I am using Neovim as my IDE there is a question about Homebrew (I only need it when I am at 42 School so don't mind it).
