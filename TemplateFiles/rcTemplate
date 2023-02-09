@@ -303,14 +303,3 @@ fullgit()
 		echo -e "${PEACH}### ${ORANGE}Add -> ${RED}FAIL${NC}"
 	fi
 }
-
-# 	Random
-bnorm()
-{
-	rt
-	echo -e "${PINK}Be carefull this command does not show norm error for COMMENT !${NC}"
-	echo -e "${ORANGE}----------------------------------------------------------------${NC}"
-	printf ${PEACH}
-	norminette $1 | grep -v COMMENT | grep -v OK!
-	echo -e "${ORANGE}----------------------------------------------------------------${NC}"
-}
