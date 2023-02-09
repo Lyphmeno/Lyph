@@ -1,4 +1,4 @@
-#include "CLASSNAME.hpp"
+#include "../inc/CLASSNAME.hpp"
 
 /////////////////////////////
 // Coplien                 //
