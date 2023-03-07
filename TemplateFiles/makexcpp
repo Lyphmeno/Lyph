@@ -10,7 +10,6 @@ ALLSRC
 
 INCDIR		:=	inc
 INCEXT		:=	hpp
-TEMPEXT		:=	tpp
 HEADERS		:=	\
 ALLHEADER
 
@@ -22,7 +21,7 @@ OBJS		:=	$(subst $(SRCDIR),$(OBJDIR),$(SRC:.$(SRCEXT)=.$(OBJEXT)))
 .PHONY: all
 all: $(NAME)
 
-$(NAME):	$(OBJDIR) $(OBJS) $(HEADERS) $(TEMPLATES) Makefile
+$(NAME):	$(OBJDIR) $(OBJS) $(HEADERS) Makefile
 			@echo -ne '    \033c$(E_BAR)\n'
 			$(CXX) $(CXFLAGS) -o $(NAME) $(OBJS) 
 
@@ -59,7 +58,7 @@ PRC			:=	$(shell echo "$(INDEX) / $(BUILD_SIZE) * 100" | bc -l)
 progress	:=	$(shell echo "$(INDEX) / ($(BUILD_SIZE) / 20)" | bc -l)
 
 define update_bar =
-    E_BAR		:=	$(_PINK)-->$(_ORANGE)[$(_STOP)$(_CREAM)$(shell python -c 'print("█" * int($(progress)))')$(shell python -c 'print(" " * (20 - int($(progress))))')$(_ORANGE)]$(_PINK)<--$(_ORANGE)[$(_CREAM)$(shell echo $(PRC) / 1 | bc)%$(_ORANGE)]$(_STOP)
+    E_BAR		:=	$(_PINK)-->$(_ORANGE)[$(_STOP)$(_CREAM)$(shell python3 -c 'print("█" * int($(progress)))')$(shell python3 -c 'print(" " * (20 - int($(progress))))')$(_ORANGE)]$(_PINK)<--$(_ORANGE)[$(_CREAM)$(shell echo $(PRC) / 1 | bc)%$(_ORANGE)]$(_STOP)
 	INDEX		:=	$(shell echo $(INDEX) + 1 | bc -l)
     progress	:=	$(shell echo "$(INDEX) / ($(BUILD_SIZE) / 20)" | bc -l)
 	PRC			:=	$(shell echo "$(INDEX) / $(BUILD_SIZE) * 100" | bc -l)
