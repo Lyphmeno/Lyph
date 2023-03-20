@@ -19,7 +19,16 @@ while true; do
     cat TemplateFiles/rcTemplate > ~/."$mysh"rc
     case $yn in
         [Yy]* ) echo ". \$HOME/.brewconfig.zsh" >> ~/."$mysh"rc | echo "Added source for Brew" ; break;;
-        [Nn]* ) echo "No source Added for brew" ; exit;;
+        [Nn]* ) echo "No source Added for brew" ; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+while true; do
+    read -p "Do you wish to add an alias for Neovim ? [Y/N]" yn
+    cat TemplateFiles/rcTemplate > ~/."$mysh"rc
+    case $yn in
+        [Yy]* ) echo "alias nvim='~/nvim-linux64/bin/nvim'" >> ~/."$mysh"rc | echo "Added alias for nvim" ; break;;
+        [Nn]* ) echo "No alias added for nvim" ;break;;
         * ) echo "Please answer yes or no.";;
     esac
 done
