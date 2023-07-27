@@ -73,7 +73,7 @@ upsh()
 	oldir=$(echo $PWD)
 	cd $HOME/42/Ghub/Usefull/
 	rt
-	. $HOME/42/Ghub/Usefull/CreateAll.sh
+	. $HOME/42/Ghub/Usefull/CreateAll.sh -y
 	if [ $? -eq 0 ]; then
 		echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED ${PEACH}----${NC}"
 	else
@@ -238,6 +238,12 @@ genbch()
 }
 
 # 	Git
+gitsetup()
+{
+	git config --global user.name "Lyfmeno"
+	git config --global user.email "hugolevipro@gmail.com"
+}
+
 gclyf()
 {
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
@@ -287,6 +293,7 @@ llog()
 
 fullgit()
 {
+	gitsetup
 	git add -A
 	if [ $? -eq 0 ]; then
 		echo -e "${PEACH}### ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
