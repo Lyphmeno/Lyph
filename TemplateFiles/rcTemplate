@@ -73,7 +73,7 @@ upsh()
 	oldir=$(echo $PWD)
 	cd $HOME/42/Ghub/Usefull/
 	rt
-	. $HOME/42/Ghub/Usefull/CreateAll.sh -y
+	. $HOME/42/Ghub/Usefull/CreateAll.sh Y
 	if [ $? -eq 0 ]; then
 		echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED ${PEACH}----${NC}"
 	else
@@ -294,6 +294,7 @@ llog()
 fullgit()
 {
 	gitsetup
+	echo -e "${PEACH}### ${ORANGE}Git setup -> ${GREEN}SUCCESS${NC}"
 	git add -A
 	if [ $? -eq 0 ]; then
 		echo -e "${PEACH}### ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
