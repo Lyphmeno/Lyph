@@ -1,4 +1,5 @@
 #!/bin/sh
+export PATH="/usr/local/bin:$PATH"
 # COLORS
 RED='\033[4;31m\033[5m'
 CYAN='\033[0;36m'
@@ -10,7 +11,7 @@ PEACH='\033[38;5;223m\e[1m'
 YELLOW='\033[38;5;226m\e[1m'
 GREEN='\033[1;32m'
 NC='\033[0m'
-mysh=`echo $SHELL | cut -d/ -f3`
+mysh=`echo $SHELL | cut -d/ -f3`no
 
 # ALIAS
 # 	Basics
@@ -30,37 +31,11 @@ alias mcl='rt; make fclean'
 alias mre='rt; make re'
 
 # FUNCTIONS
-# 	Specific Dir
-ledit()
-{	
-	echo -e "${PEACH}---- Opening Lym nvim file ----${NC}"
-	cd ~/42/Ghub/Lym/
-	nvim nvim
-}
-
-vedit()
-{	
-	echo -e "${PEACH}---- Opening ~/.config/nivm file ----${NC}"
-	cd ~/.config/nvim
-	nvim .
-}
-
-zedit()
+# 	Basic
+pnorm()
 {
-	echo -e "${PEACH}---- Opening .rc file ----${NC}"
-	nvim ~/."$mysh"rc
-}
-
-uedit()
-{
-	echo -e "${PEACH}---- Opening Usefull file ----${NC}"
-	cd $HOME/42/Ghub/Usefull
-	nvim .
-}
-
-kode()
-{
-	nvim .
+	#pip install flake8
+	flake8 .
 }
 
 rsource()
@@ -98,37 +73,6 @@ gupsh()
 	cd "${oldir}"
 }
 
-uplym()
-{
-	oldir=$(echo $PWD)
-	cd $HOME/42/Ghub/Lym/
-	rt
-	. $HOME/42/Ghub/Lym/Setup.sh
-	if [ $? -eq 0 ]; then
-		echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED ${PEACH}----${NC}"
-	else
-		echo -e "${PEACH}---- Updating current RC ${RED}FAILED ${PEACH}----${NC}"
-	fi
-	cd "${oldir}"
-}
-
-guplym()
-{
-	oldir=$(echo $PWD)
-	cd $HOME/42/Ghub/Lym/
-	rt
-	. $HOME/42/Ghub/Lym/Setup.sh
-	if [ $? -eq 0 ]; then
-		echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED${PEACH} ----${NC}"
-		cd $HOME/42/Ghub/Lym/
-		fullgit $*
-	else
-		echo -e "${PEACH}---- Updating current RC ${RED}FAILED${PEACH} ----${NC}"
-	fi
-	cd "${oldir}"
-}
-
-
 # 	Template Generation
 mkc()
 {
@@ -160,7 +104,7 @@ mkcpp()
 	cat ~/.templates/.makexcpp > Makefile
 	sed -i "s/a.out/$1/g" Makefile
 	echo -e "${PEACH}------------------------${NC}"
-	echo -e "${PINK} Created a CPP Makefile${NC}"
+	echo -e "${PINK} Created a CPP Makefile${NC}"no
 	echo -e "${PEACH}------------------------${NC}"
 }
 
