@@ -2,6 +2,7 @@
 cd
 mkdir -p 42 42/Ghub 42/Vogsphere
 mysh=`echo $SHELL | cut -d/ -f3`
+cd -
 # Creating files
 mkdir -p ~/.templates
 touch ~/.templates/.basicHPP

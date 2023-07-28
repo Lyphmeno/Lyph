@@ -1,5 +1,5 @@
 #!/bin/sh
-export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 # COLORS
 RED='\033[4;31m\033[5m'
 CYAN='\033[0;36m'
