@@ -35,6 +35,7 @@ alias mre='rt; make re'
 pnorm()
 {
 	#pip install flake8
+	rt
 	flake8 .
 }
 
