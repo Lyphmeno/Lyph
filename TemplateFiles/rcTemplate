@@ -11,28 +11,28 @@ PEACH='\033[38;5;223m\e[1m'
 YELLOW='\033[38;5;226m\e[1m'
 GREEN='\033[1;32m'
 NC='\033[0m'
-mysh=`echo $SHELL | cut -d/ -f3`no
+mysh=`echo $SHELL | cut -d/ -f3`
 
 # ALIAS
-# 	Basics
+#   Basics
 alias pyt='python3.10'
 alias rt='printf "\033c"'
 alias ll='ls -l --color=auto'
 alias l='ls -la --color=auto'
 alias dilf='diff -r'
 alias grademe='bash -c "$(curl https://grademe.fr)"'
-#	 Compile
+#   Compile
 alias cpl='gcc -Wall -Wextra -Werror -g'
 alias vgrind='valgrind --leak-check=full --show-leak-kinds=all'
-# 	Git
+#   Git
 alias gits='git fetch origin; git status'
 alias gitl='git log'
-# 	Makefile
+#   Makefile
 alias mcl='rt; make fclean'
 alias mre='rt; make re'
 
 # FUNCTIONS
-# 	Basic
+#   Basic
 pnorm()
 {
 	#pip install flake8
@@ -40,7 +40,7 @@ pnorm()
 	flake8 .
 }
 
-()
+rsource()
 {
 	source ~/."$mysh"rc
 }
