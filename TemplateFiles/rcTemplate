@@ -15,6 +15,7 @@ mysh=`echo $SHELL | cut -d/ -f3`no
 
 # ALIAS
 # 	Basics
+alias pyt='python3.10'
 alias rt='printf "\033c"'
 alias ll='ls -l --color=auto'
 alias l='ls -la --color=auto'
@@ -39,7 +40,7 @@ pnorm()
 	flake8 .
 }
 
-rsource()
+()
 {
 	source ~/."$mysh"rc
 }
