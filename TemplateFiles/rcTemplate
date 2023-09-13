@@ -238,6 +238,20 @@ llog()
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
 
+commit()
+{
+	gitsetup
+	echo -e "${PEACH}### ${ORANGE}Git setup -> ${GREEN}SUCCESS${NC}"
+	git add -A
+	if [ $? -eq 0 ]; then
+		echo -e "${PEACH}### ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
+		git commit -m "$*"
+		echo -e "${PEACH}### ${ORANGE}Commit -> ${GREEN}SUCCESS${NC}"
+	else
+		echo -e "${PEACH}### ${ORANGE}Add -> ${RED}FAIL${NC}"
+	fi
+}
+
 fullgit()
 {
 	gitsetup
