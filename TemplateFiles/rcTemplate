@@ -15,6 +15,7 @@ mysh=`echo $SHELL | cut -d/ -f3`
 
 # ALIAS
 #   Basics
+alias pyp='python3.10 -m pip'
 alias pyt='python3.10'
 alias rt='printf "\033c"'
 alias ll='ls -l --color=auto'
