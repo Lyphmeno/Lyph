@@ -1,5 +1,5 @@
 
-# USEFULL 
+# LYPH 
 
 This repository is a save of all the aliases and functions I like to have on my linux. From git function to cpp or hpp generator, this file help me a lot when I need to setup a new machine.\
 The program should work on any `.rc` file type.
