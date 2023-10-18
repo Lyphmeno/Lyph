@@ -1,5 +1,7 @@
 #!/bin/sh
 export PATH="$HOME/.local/bin:$PATH"
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+export LIBGL_ALWAYS_INDIRECT=1
 # COLORS
 RED='\033[38:5;31m\033[5m'
 CYAN='\033[0;36m'
@@ -12,7 +14,6 @@ YELLOW='\033[38;5;226m\e[1m'
 GREEN='\033[1;32m'
 NC='\033[0m'
 mysh=`echo $SHELL | cut -d/ -f3`
-
 # ALIAS
 #   Basics
 alias pyp='python3 -m pip'
@@ -31,7 +32,6 @@ alias gitl='git log'
 #   Makefile
 alias mcl='rt; make fclean'
 alias mre='rt; make re'
-
 # FUNCTIONS
 #   Basic
 flk()
@@ -44,6 +44,7 @@ flk()
 rsource()
 {
 	source ~/."$mysh"rc
+    if [ ! -a ~/.inputrc ]; then bind -f ~/.inputrc; fi
 }
 
 upsh()

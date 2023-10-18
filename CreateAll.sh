@@ -18,3 +18,5 @@ cat TemplateFiles/makexcpp > ~/.templates/.makexcpp
 # Writting the rc config file 
 unalias -a
 cat TemplateFiles/rcTemplate > ~/."$mysh"rc
+if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
+cat TemplateFiles/rcinput > ~/.inputrc
