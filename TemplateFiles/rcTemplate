@@ -1,6 +1,5 @@
 #!/bin/sh
 export PATH="$HOME/.local/bin:$PATH"
-export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
 export LIBGL_ALWAYS_INDIRECT=1
 # COLORS
 RED='\033[38:5;31m\033[5m'
@@ -44,7 +43,11 @@ flk()
 rsource()
 {
 	source ~/."$mysh"rc
-    if [ ! -a ~/.inputrc ]; then bind -f ~/.inputrc; fi
+	if [ ! -e ~/.inputrc ]; then
+		if [ $mysh = "bash" ]; then
+			bind -f ~/.inputrc
+		fi
+	fi
 }
 
 upsh()
