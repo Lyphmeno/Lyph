@@ -1,8 +1,9 @@
 #!/bin/sh
+mysh=`echo $SHELL | cut -d/ -f3`
+zsh git_setup_menu.sh
 cd
 mkdir -p 42 42/Ghub 42/Vogsphere
-mysh=`echo $SHELL | cut -d/ -f3`
-cd -
+cd - > /dev/null 2>&1
 # Creating files
 mkdir -p ~/.templates
 touch ~/.templates/.basicHPP
@@ -24,5 +25,4 @@ if [ ! -e ~/.inputrc ]; then
         bind 'set completion-ignore-case on'
     fi
 fi
-
 cat TemplateFiles/rcinput > ~/.inputrc
