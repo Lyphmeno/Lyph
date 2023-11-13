@@ -10,7 +10,7 @@ Since I am using Neovim as my IDE there is a question about Homebrew (I only nee
 This said the installation is quite simple, just run this :
 
 ```bash
-  ./CreateAll.sh
+  ./SETUP.sh
 ```
     
 ## Files
