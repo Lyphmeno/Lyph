@@ -56,42 +56,42 @@ rsource()
 }
 
 get_github_credentials_and_title() {
-  echo "Enter your GitHub username:"
-  read GITHUB_USERNAME
+    # Prompt for password without echoing it to the terminal
+    echo "Enter your GitHub password: " 
+    read -s GITHUB_PASSWORD
 
-  # Prompt for password without echoing it to the terminal
-  read -s -p "Enter your GitHub password: " GITHUB_PASSWORD
-  echo  # Move to a new line after password input
-
-  echo "Enter the pull request title:"
-  read PR_TITLE
+    echo "Enter the pull request title: "
+    read PR_TITLE
 }
 
 # Function to create a pull request, conditionally prompting based on the user
 create_pull_request() {
-  local REPO_OWNER=Lyfmeno
-  local REPO_NAME=Lyph
-  local BASE_BRANCH=main
-  local FEATURE_BRANCH=feature-branch
+    local REPO_OWNER=Lyfmeno
+    local REPO_NAME=Lyph
+    local BASE_BRANCH=main
+    local FEATURE_BRANCH=$BASE_BRANCH
 
-  # Check if the user is lyfmeno
-  if [ "$GITHUB_USERNAME" != "Lyfmeno" ]; then
+
+    echo "Enter your GitHub username:"
+    read GITHUB_USERNAME
+    if [ "$GITHUB_USERNAME" != "Lyfmendo" ]; then
     get_github_credentials_and_title
-
-    curl -X POST \
-      -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" \
-      -H "Content-Type: application/json" \
-      -d "{\"title\":\"$PR_TITLE\", \"head\":\"$FEATURE_BRANCH\", \"base\":\"$BASE_BRANCH\", \"body\":\"Description of your pull request\"}" \
-      https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/pulls
-  else
-    echo "Skipping pull request creation for user lyfmeno."
-  fi
+    curl -i -X POST \
+        -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" \
+        -H "Content-Type: application/json" \
+        -d "{\"title\":\"$PR_TITLE\", \"head\":\"$FEATURE_BRANCH\", \"base\":\"$BASE_BRANCH\", \"body\":\"Description of your pull request\"}" \
+        https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/pulls
+    else
+    echo "Skipping pull request creation for user Lyfmeno."
+    fi
 }
 
 push_to_submodule() {
     local submodule_path=$1
+    echo "Enter the commit message for $submodule_path:"
+    read commit_message
     git -C "$submodule_path" add -A
-    git -C "$submodule_path" commit -m "$*"
+    git -C "$submodule_path" commit -m "$commit_message"
     git -C "$submodule_path" push
 }
 
@@ -108,9 +108,9 @@ upatsuko() {
 }
 
 upall() {
-    upshepard
-    uputu
-    upatsuko
+    push_to_submodule "Templates/TemplateFilesShepard"
+    push_to_submodule "Templates/TemplateFilesUtu"
+    push_to_submodule "Templates/TemplateFilesAtsuko"
     create_pull_request
     fullgit "$@"
 }
