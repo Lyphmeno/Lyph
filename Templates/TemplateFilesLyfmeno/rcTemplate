@@ -79,9 +79,9 @@ upatsuko()
 
 upall()
 {
-    upshepard 
-    uputu
-    upatsuko
+    upshepard $* 
+    uputu $*
+    upatsuko $*
     fullgit $*
 }
 
