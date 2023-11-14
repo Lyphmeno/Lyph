@@ -53,36 +53,31 @@ rsource()
 	fi
 }
 
-upshepard()
-{
-    cd ~/42/Ghub/Lyph
-    git -C Templates/TemplateFilesShepard add -A
-    git -C Templates/TemplateFilesShepard commit -m "$*"
-    git -C Templates/TemplateFilesShepard push -u origin master
+push_to_submodule() {
+    local submodule_path=$1
+    cd "$GITHUB_DIR"
+    git -C "$submodule_path" add -A
+    git -C "$submodule_path" commit -m "$*"
+    git -C "$submodule_path" push
 }
 
-uputu()
-{
-    cd ~/42/Ghub/Lyph
-    git -C Templates/TemplateFilesUtu add -A
-    git -C Templates/TemplateFilesUtu commit -m "$*"
-    git -C Templates/TemplateFilesUtu push -u origin master
+upshepard() {
+    push_to_submodule "Templates/TemplateFilesShepard"
 }
 
-upatsuko()
-{
-    cd ~/42/Ghub/Lyph
-    git -C Templates/TemplateFilesAtsuko add -A
-    git -C Templates/TemplateFilesAtsuko commit -m "$*"
-    git -C Templates/TemplateFilesAtsuko push -u origin master
+uputu() {
+    push_to_submodule "Templates/TemplateFilesUtu"
 }
 
-upall()
-{
-    upshepard $*
+upatsuko() {
+    push_to_submodule "Templates/TemplateFilesAtsuko"
+}
+
+upall() {
+    upshepard
     uputu
     upatsuko
-    fullgit $*
+    fullgit "$@"
 }
 
 # 	Template Generation
