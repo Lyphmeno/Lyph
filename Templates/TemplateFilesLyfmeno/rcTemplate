@@ -19,6 +19,8 @@ mysh=`echo $SHELL | cut -d/ -f3`
 # ALIAS
 #   Basics
 alias pyp='python3 -m pip'
+alias lyph='declare -f'
+alias lypha='alias | grep'
 alias pyt='rt; python3'
 alias rt='printf "\033c"'
 alias ll='ls -l --color=auto'
@@ -53,9 +55,41 @@ rsource()
 	fi
 }
 
+get_github_credentials_and_title() {
+  echo "Enter your GitHub username:"
+  read GITHUB_USERNAME
+
+  # Prompt for password without echoing it to the terminal
+  read -s -p "Enter your GitHub password: " GITHUB_PASSWORD
+  echo  # Move to a new line after password input
+
+  echo "Enter the pull request title:"
+  read PR_TITLE
+}
+
+# Function to create a pull request, conditionally prompting based on the user
+create_pull_request() {
+  local REPO_OWNER=Lyfmeno
+  local REPO_NAME=Lyph
+  local BASE_BRANCH=main
+  local FEATURE_BRANCH=feature-branch
+
+  # Check if the user is lyfmeno
+  if [ "$GITHUB_USERNAME" != "Lyfmeno" ]; then
+    get_github_credentials_and_title
+
+    curl -X POST \
+      -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" \
+      -H "Content-Type: application/json" \
+      -d "{\"title\":\"$PR_TITLE\", \"head\":\"$FEATURE_BRANCH\", \"base\":\"$BASE_BRANCH\", \"body\":\"Description of your pull request\"}" \
+      https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/pulls
+  else
+    echo "Skipping pull request creation for user lyfmeno."
+  fi
+}
+
 push_to_submodule() {
     local submodule_path=$1
-    cd "$GITHUB_DIR"
     git -C "$submodule_path" add -A
     git -C "$submodule_path" commit -m "$*"
     git -C "$submodule_path" push
@@ -77,6 +111,7 @@ upall() {
     upshepard
     uputu
     upatsuko
+    create_pull_request
     fullgit "$@"
 }
 
