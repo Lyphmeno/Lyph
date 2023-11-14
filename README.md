@@ -10,7 +10,8 @@ Since I am using Neovim as my IDE there is a question about Homebrew (I only nee
 This said the installation is quite simple, just run this :
 
 ```bash
-  ./SETUP.sh
+    git clone --recursive https://github.com/Lyfmeno/Lyph.git
+    ./SETUP.sh
 ```
     
 ## Files
