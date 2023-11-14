@@ -64,17 +64,17 @@ upshepard()
 uputu()
 {
     cd ~/42/Ghub/Lyph
-    git -C Templates/TemplateFilesShepard add -A
-    git -C Templates/TemplateFilesShepard commit -m "$*"
-    git -C Templates/TemplateFilesShepard push origin master
+    git -C Templates/TemplateFilesUtu add -A
+    git -C Templates/TemplateFilesUtu commit -m "$*"
+    git -C Templates/TemplateFilesUtu push origin master
 }
 
 upatsuko()
 {
     cd ~/42/Ghub/Lyph
-    git -C Templates/TemplateFilesShepard add -A
-    git -C Templates/TemplateFilesShepard commit -m "$*"
-    git -C Templates/TemplateFilesShepard push origin master
+    git -C Templates/TemplateFilesAtsuko add -A
+    git -C Templates/TemplateFilesAtsuko commit -m "$*"
+    git -C Templates/TemplateFilesAtsuko push origin master
 }
 
 upall()
