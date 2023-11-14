@@ -1,0 +1,18 @@
+#pragma once
+
+class CLASSNAME
+{
+private:
+public:
+	// Coplien //
+	CLASSNAME();
+	CLASSNAME(const CLASSNAME &cpy);
+	~CLASSNAME();
+	CLASSNAME &operator=(const CLASSNAME &rhs);
+	// Assignation contructors //
+	// Operators //
+	// Getters //
+	// Setters //
+	// Methods //
+	// Exceptions //
+};

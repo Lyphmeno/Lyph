@@ -1,3 +1,9 @@
-[submodule "Templates/testatsuko"]
-	path = Templates/testatsuko
+[submodule "Templates/TemplateFilesAtsuko"]
+	path = Templates/TemplateFilesAtsuko
 	url = https://github.com/Lyfmeno/TemplateFilesAtsuko.git
+[submodule "Templates/TemplateFilesUtu"]
+	path = Templates/TemplateFilesUtu
+	url = https://github.com/Lyfmeno/TemplateFilesUtu.git
+[submodule "Templates/TemplateFilesShepard"]
+	path = Templates/TemplateFilesShepard
+	url = https://github.com/Lyfmeno/TemplateFilesShepard.git
