@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 # 	SHOW MENU
+mysh=`echo $SHELL | cut -d/ -f3`
 # Function to change GitHub user information
 change_github_info()
 {
@@ -35,11 +36,41 @@ prompt_for_new_user()
     echo -e "Email: \e[1;32m$new_email\e[0m"
 }
 
+#Function to setup templates files
+create_templates()
+{
+    local selected_profile=$1
+
+    # Define the folder name based on the selected profile
+    local folder_name="TemplateFiles${selected_profile}"
+
+    # Check if the folder exists
+    if [ -d "$folder_name" ]; then
+        # Adding all the templates files
+        cat $folder_name/basicHPP > ~/.templates/.basicHPP
+        cat $folder_name/basicCPP > ~/.templates/.basicCPP
+        cat $folder_name/makexc > ~/.templates/.makexc
+        cat $folder_name/makexcpp > ~/.templates/.makexcpp
+        # Writting the rc config file 
+        unalias -a
+        cat $folder_name/rcTemplate > ~/."$mysh"rc
+        if [ ! -e ~/.inputrc ]; then
+            echo '$include /etc/inputrc' > ~/.inputrc
+            if [ $mysh = "bash" ]; then
+                bind 'set completion-ignore-case on'
+            fi
+        fi
+        cat $folder_name/rcinput > ~/.inputrc
+    else
+        echo -e "\nFolder $folder_name does not exist."
+    fi
+}
+
 # Function to display the menu
 show_menu()
 {
     local selected=2
-    local option_names=("Lyfmeno" "ShuBei" "Shepard" "Atsuko" "NEW")
+    local option_names=("Lyfmeno" "Utu" "Shepard" "Atsuko" "NEW")
     local github_usernames=("Lyfmeno" "ShuBei33" "Shepardinio" "maverqui" "NEW_GITHUB_USER")
     local github_emails=("hugolevipro@gmail.com" "estoffel@student.42.fr" "mel-yand@student.42.fr" "maeverquin13@gmail.com" "newuser@example.com")
     local max_len=0
@@ -86,6 +117,7 @@ show_menu()
                     echo -e "GitHub user information changed to:"
                     echo -e "Username: \e[1;32m${github_usernames[$selected-1]}\e[0m"
                     echo -e "Email: \e[1;32m${github_emails[$selected-1]}\e[0m"
+                    create_templates "${option_names[$selected-1]}"
                 fi
                 break
                 ;;

@@ -1,28 +1,13 @@
 #!/bin/sh
-mysh=`echo $SHELL | cut -d/ -f3`
-zsh git_setup_menu.sh
-cd
-mkdir -p 42 42/Ghub 42/Vogsphere
-cd - > /dev/null 2>&1
 # Creating files
 mkdir -p ~/.templates
 touch ~/.templates/.basicHPP
 touch ~/.templates/.basicCPP
 touch ~/.templates/.makexc
 touch ~/.templates/.makexcpp
-# Adding all the templates files
-cat TemplateFiles/basicHPP > ~/.templates/.basicHPP
-cat TemplateFiles/basicCPP > ~/.templates/.basicCPP
-cat TemplateFiles/makexc > ~/.templates/.makexc
-cat TemplateFiles/makexcpp > ~/.templates/.makexcpp
 
-# Writting the rc config file 
-unalias -a
-cat TemplateFiles/rcTemplate > ~/."$mysh"rc
-if [ ! -e ~/.inputrc ]; then
-    echo '$include /etc/inputrc' > ~/.inputrc
-    if [ $mysh = "bash" ]; then
-        bind 'set completion-ignore-case on'
-    fi
-fi
-cat TemplateFiles/rcinput > ~/.inputrc
+# Profile Selection
+zsh git_setup_menu.sh
+cd
+mkdir -p 42 42/Ghub 42/Vogsphere
+cd - > /dev/null 2>&1
