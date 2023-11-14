@@ -10,10 +10,15 @@ Since I am using Neovim as my IDE there is a question about Homebrew (I only nee
 This said the installation is quite simple, just run this :
 
 ```bash
-    git clone --recursive https://github.com/Lyfmeno/Lyph.git
+    # To clone
+    git clone --recursive https://github.com/Lyfmeno/Lyph.git 
+    # To update
+    git submodule update --init --recursive
     ./SETUP.sh
 ```
-    
+
+The recursive option is very important since I allowed my friends to make their own templates !!!
+
 ## Files
 
 The Template file contains everything I need :
