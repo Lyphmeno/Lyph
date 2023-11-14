@@ -1,0 +1,7 @@
+#!/bin/sh
+set show-all-if-ambiguous on
+set completion-ignore-case on
+set colored-completion-prefix on
+set colored-stats on
+TAB:menu-complete
+\e[Z": menu-complete-backward

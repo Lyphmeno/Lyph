@@ -42,7 +42,7 @@ create_templates()
     local selected_profile=$1
 
     # Define the folder name based on the selected profile
-    local folder_name="TemplateFiles${selected_profile}"
+    local folder_name="Templates/TemplateFiles${selected_profile}"
 
     # Check if the folder exists
     if [ -d "$folder_name" ]; then

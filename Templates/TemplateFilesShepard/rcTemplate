@@ -1,0 +1,394 @@
+#!/bin/sh
+#-----------------------------------------------------------------------------#
+#----------------------------------Shepard------------------------------------#
+#-----------------------------------------------------------------------------#
+export PATH="$HOME/.local/bin:$PATH"
+export LIBGL_ALWAYS_INDIRECT=1
+# COLORS
+RED='\033[38:5;31m\033[5m'
+CYAN='\033[0;36m'
+BLUE='\033[0;34m'
+ORANGE='\033[38;5;209m\e[1m'
+PURPLE='\033[38;5;207m\e[1m'
+PINK='\033[38;5;204m\e[1m'
+PEACH='\033[38;5;223m\e[1m'
+YELLOW='\033[38;5;226m\e[1m'
+GREEN='\033[1;32m'
+NC='\033[0m'
+mysh=`echo $SHELL | cut -d/ -f3`
+# ALIAS
+#   Basics
+alias pyp='python3 -m pip'
+alias pyt='rt; python3'
+alias rt='printf "\033c"'
+alias ll='ls -l --color=auto'
+alias l='ls -la --color=auto'
+alias dilf='diff -r'
+alias grademe='bash -c "$(curl https://grademe.fr)"'
+#   Compile
+alias cpl='gcc -Wall -Wextra -Werror -g'
+alias vgrind='valgrind --leak-check=full --show-leak-kinds=all'
+#   Git
+alias gits='git fetch origin; git status'
+alias gitl='git log'
+#   Makefile
+alias mcl='rt; make fclean'
+alias mre='rt; make re'
+# FUNCTIONS
+#   Basic
+flk()
+{
+	#pip install flake8
+	rt
+	flake8 .
+}
+
+rsource()
+{
+	source ~/."$mysh"rc
+	if [ ! -e ~/.inputrc ]; then
+		if [ $mysh = "bash" ]; then
+			bind -f ~/.inputrc
+		fi
+	fi
+}
+
+upsh()
+{
+	oldir=$(echo $PWD)
+	cd $HOME/42/Ghub/Usefull/
+	rt
+	. $HOME/42/Ghub/Usefull/CreateAll.sh Y
+	if [ $? -eq 0 ]; then
+		echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED ${PEACH}----${NC}"
+	else
+		echo -e "${PEACH}---- Updating current RC ${RED}FAILED ${PEACH}----${NC}"
+	fi
+	cd "${oldir}"
+}
+
+gupsh()
+{
+	oldir=$(echo $PWD)
+	cd $HOME/42/Ghub/Usefull/
+	rt
+	. $HOME/42/Ghub/Usefull/CreateAll.sh
+	if [ $? -eq 0 ]; then
+		echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED${PEACH} ----${NC}"
+		cd $HOME/42/Ghub/Usefull
+		fullgit $*
+	else
+		echo -e "${PEACH}---- Updating current RC ${RED}FAILED${PEACH} ----${NC}"
+	fi
+	cd "${oldir}"
+}
+
+# 	Template Generation
+mkc()
+{
+	cat ~/.templates/.makexc > Makefile
+	sed -i "s/a.out/$1/g" Makefile
+	echo -e "${PEACH}-----------------------${NC}"
+	echo -e "${PINK} Created a C Makefile${NC}"
+	echo -e "${PEACH}-----------------------${NC}"
+}
+
+mksrc()
+{
+	printf '%s\n' "$(find . -type f -name "*.c" | grep -v "MLX" | sed -e "s/$/\\\/g" | sed -e "s/^/\t\t\t\t/g" )" |  sed -e '/ALLSRC/{ r /dev/stdin' -e 'd; }' $HOME/.templates/.makexc > Makefile.temp && printf '%s\n' "$(find . -type f -name "*.h" | grep -v "MLX" | sed -e "s/$/\\\/g" | sed -e "s/^/\t\t\t\t/g" )" | sed -e '/ALLHEADER/{ r /dev/stdin' -e 'd; }' Makefile.tmp > Makefile && rm Makefile.tmp
+	echo -e "${PEACH}----------------------------------${NC}"
+	echo -e "${PINK} Added Sources|Header to Makefile${NC}"
+	echo -e "${PEACH}----------------------------------${NC}"
+}
+
+mksrcpp()
+{
+	printf '%s\n' "$(find . -type f -name "*.cpp" | grep -v "MLX" | sed -e "s/$/\\\/g" | sed -e "s/^/\t\t\t\t/g" )" | sed -e '/ALLSRC/{ r /dev/stdin' -e 'd; }' $HOME/.templates/.makexcpp > Makefile.temp && printf '%s\n' "$(find . -type f -name "*.hpp" | grep -v "MLX" | sed -e "s/$/\\\/g" | sed -e "s/^/\t\t\t\t/g" )" | sed -e '/ALLHEADER/{ r /dev/stdin' -e 'd; }' Makefile.tmp > Makefile && rm Makefile.tmp
+	echo -e "${PEACH}-------------------------------------------${NC}"
+	echo -e "${PINK} Added Sources|Header|Template to Makefile${NC}"
+	echo -e "${PEACH}-------------------------------------------${NC}"
+}
+
+mkcpp()
+{
+	cat ~/.templates/.makexcpp > Makefile
+	sed -i "s/a.out/$1/g" Makefile
+	echo -e "${PEACH}------------------------${NC}"
+	echo -e "${PINK} Created a CPP Makefile${NC}"no
+	echo -e "${PEACH}------------------------${NC}"
+}
+
+fullmkcpp()
+{
+	mkdir inc src
+	mv *.cpp src
+	mv *.hpp inc
+	mv *.tpp inc
+	echo -e "${PEACH}---------------------------${NC}"
+	echo -e "${PINK} Created a CPP Environment${NC}"
+	echo -e "${PEACH}---------------------------${NC}"
+	cat ~/.templates/.makexcpp > Makefile
+	sed -i "s/a.out/$1/g" Makefile
+	echo -e "${PEACH}------------------------${NC}"
+	echo -e "${PINK} Created a CPP Makefile${NC}"
+	echo -e "${PEACH}------------------------${NC}"
+}
+
+fullmkc()
+{
+	mkdir inc src
+	mv *.c src
+	mv *.h inc
+	echo -e "${PEACH}-------------------------${NC}"
+	echo -e "${PINK} Created a C Environment${NC}"
+	echo -e "${PEACH}-------------------------${NC}"
+	cat ~/.templates/.makexc > Makefile
+	sed -i "s/a.out/$1/g" Makefile
+	echo -e "${PEACH}----------------------${NC}"
+	echo -e "${PINK} Created a C Makefile${NC}"
+	echo -e "${PEACH}----------------------${NC}"
+}
+
+genhpp()
+{
+	if [ $# -lt 1 ]; then
+		return
+	fi
+	for i in {1..$#}; do
+		fileName="${(P)i}.hpp"
+		cat ~/.templates/.basicHPP > $fileName
+		sed -i "s/CLASSNAME/${(P)i}/g" $fileName
+		echo -e "${PEACH}----------------------------${NC}"
+		echo -e "${PINK} Created a Basic CPP HEADER${NC}"
+		echo -e "${PEACH}----------------------------${NC}"
+	done
+}
+
+gencpp()
+{
+	if [ $# -lt 1 ]; then
+		return
+	fi
+	for i in {1..$#}; do
+		fileName="${(P)i}.cpp"
+		cat ~/.templates/.basicCPP > $fileName
+		sed -i "s/CLASSNAME/${(P)i}/g" $fileName
+		echo -e "${PEACH}--------------------------${NC}"
+		echo -e "${PINK} Created a Basic CPP FILE${NC}"
+		echo -e "${PEACH}--------------------------${NC}"
+	done
+}
+
+genbch()
+{
+	if [ $# -lt 1 ]; then
+		return
+	fi
+	for i in {1..$#}; do
+		name=${(P)i}
+		gencpp $name
+		genhpp $name
+	done
+}
+
+# 	Git
+gitset()
+{
+    show_menu
+}
+
+gclyf()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git clone "git@github.com:Lyfmeno/$1.git" --recursive
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+}
+
+gitc()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git checkout $1
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+}
+
+gitbr()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git branch $*
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+}
+
+gitbra()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git branch -a $*
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+}
+
+llog()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git log | head -5 | tail -4 | head -3
+	printf ${PINK}
+	git log | head -5 | tail -1
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+}
+
+cmtr()
+{
+    rt
+	echo -e "${RED}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git log | head -5 | tail -4 | head -3
+	printf ${PINK}
+	git log | head -5 | tail -1
+	printf ${NC}
+	echo -e "${RED}------------------------------------------------------------${NC}"
+	git commit --amend -m "$*" > /dev/null
+	echo -e "${GREEN}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git log | head -5 | tail -4 | head -3
+	printf ${PINK}
+	git log | head -5 | tail -1
+	printf ${NC}
+	echo -e "${GREEN}------------------------------------------------------------${NC}"
+}
+
+cmt()
+{
+	echo -e "${PEACH}### ${ORANGE}Git setup -> ${GREEN}SUCCESS${NC}"
+	git add -A
+	if [ $? -eq 0 ]; then
+		echo -e "${PEACH}### ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
+		git commit -m "$*"
+		echo -e "${PEACH}### ${ORANGE}Commit -> ${GREEN}SUCCESS${NC}"
+	else
+		echo -e "${PEACH}### ${ORANGE}Add -> ${RED}FAIL${NC}"
+	fi
+}
+
+fullgit()
+{
+	echo -e "${PEACH}### ${ORANGE}Git setup -> ${GREEN}SUCCESS${NC}"
+	git add -A
+	if [ $? -eq 0 ]; then
+		echo -e "${PEACH}### ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
+		git commit -m "$*"
+		echo -e "${PEACH}### ${ORANGE}Commit -> ${GREEN}SUCCESS${NC}"
+		git push
+		if [ $? -eq 0 ]; then
+			echo -e "${PEACH}### ${ORANGE}Push -> ${GREEN}SUCCESS${NC}"
+			llog
+		else
+			echo -e "${PEACH}### ${ORANGE}Push -> ${RED}FAIL${NC}"
+		fi
+	else
+		echo -e "${PEACH}### ${ORANGE}Add -> ${RED}FAIL${NC}"
+	fi
+}
+
+# 	SHOW MENU
+# Function to change GitHub user information
+change_github_info()
+{
+    local username=$1
+    local email=$2
+
+    git config --global user.name "$username"
+    git config --global user.email "$email"
+}
+
+# Function to get escape sequences for arrow keys
+get_arrow_sequence()
+{
+    local key
+    read -rk1 key
+    while read -rk1 -t 0.0001; do
+        key+=$REPLY
+    done
+    echo "$key"
+}
+
+# Function to prompt for a new GitHub user
+prompt_for_new_user()
+{
+    echo -n "Enter new GitHub username: "
+    read new_username
+    echo -n "Enter new GitHub email: "
+    read new_email
+    change_github_info "$new_username" "$new_email"
+    echo -e "\nGitHub user information changed to:"
+    echo -e "Username: \e[1;32m$new_username\e[0m"
+    echo -e "Email: \e[1;32m$new_email\e[0m"
+}
+
+# Function to display the menu
+show_menu()
+{
+    local selected=2
+    local option_names=("Lyfmeno" "ShuBei" "Shepard" "Atsuko" "NEW")
+    local github_usernames=("Lyfmeno" "ShuBei33" "Shepardinio" "maverqui" "NEW_GITHUB_USER")
+    local github_emails=("hugolevipro@gmail.com" "estoffel@student.42.fr" "mel-yand@student.42.fr" "maeverquin13@gmail.com" "newuser@example.com")
+    local max_len=0
+
+    # Find the maximum length of option_names
+    for name in "${option_names[@]}"; do
+        len=${#name}
+        [ $len -gt $max_len ] && max_len=$len
+    done
+
+    local total_options=$(( ${#option_names[@]} + 1 ))
+    local rangeopt=$(( ${total_options}))
+    local box_width=$((max_len + 10))
+    tput cup 0 0
+    while true; do
+        tput clear
+        echo -e "\n\t\t  USER"
+        echo -e "\t  ┌─$(printf '─%.0s' $(seq 1 $box_width))─┐"
+        for i in {2..$rangeopt}; do
+            if [ $i -eq $selected ]; then
+                echo -e "\t→ │ \e[1;37;44m${option_names[$i-1]}\e[0m$(printf ' %.0s' $(seq 1 $((box_width - ${#option_names[$i-1]}+1))))│"
+            else
+                echo -e "\t  │ \e[0;37;40m${option_names[$i-1]}\e[0m$(printf ' %.0s' $(seq 1 $((box_width - ${#option_names[$i-1]}+1))))│"
+            fi
+        done
+        echo -e "\t  └─$(printf '─%.0s' $(seq 1 $box_width))─┘"
+
+        key=$(get_arrow_sequence)
+
+        case $key in
+            $'\e[A') # Up arrow
+                ((selected--))
+                [ $selected -lt 1 ] && selected=$total_options
+                ;;
+            $'\e[B') # Down arrow
+                ((selected++))
+                [ $selected -gt $total_options ] && selected=1
+                ;;
+            '') # Enter key
+                if [ ${option_names[$selected-1]} = "NEW" ]; then
+                    prompt_for_new_user
+                else
+                    change_github_info "${github_usernames[$selected-1]}" "${github_emails[$selected-1]}"
+                    echo -e "GitHub user information changed to:"
+                    echo -e "Username: \e[1;32m${github_usernames[$selected-1]}\e[0m"
+                    echo -e "Email: \e[1;32m${github_emails[$selected-1]}\e[0m"
+                fi
+                break
+                ;;
+            $'\e') # ESC key
+                exit
+                ;;
+        esac
+    done
+}

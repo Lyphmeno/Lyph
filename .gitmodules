@@ -1,0 +1,9 @@
+[submodule "TemplateFilesShepard"]
+	path = TemplateFilesShepard
+	url = git@github.com:Lyfmeno/TemplateFilesShepard.git
+[submodule "TemplateFilesUtu"]
+	path = TemplateFilesUtu
+	url = git@github.com:Lyfmeno/TemplateFilesUtu.git
+[submodule "TemplateFilesAtsuko"]
+	path = TemplateFilesAtsuko
+	url = git@github.com:Lyfmeno/TemplateFilesAtsuko.git
