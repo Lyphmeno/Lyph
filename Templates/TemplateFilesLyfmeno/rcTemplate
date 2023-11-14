@@ -79,7 +79,7 @@ upatsuko()
 
 upall()
 {
-    upshepard 
+    upshepard $*
     uputu
     upatsuko
     fullgit $*
