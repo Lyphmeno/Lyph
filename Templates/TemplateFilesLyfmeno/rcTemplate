@@ -79,9 +79,18 @@ upatsuko()
 
 upall()
 {
-    upshepard $* 
-    uputu $*
-    upatsuko $*
+    cd ~/42/Ghub/Lyph
+    git -C Templates/TemplateFilesShepard add -A
+    git -C Templates/TemplateFilesShepard commit -m "$*"
+    git -C Templates/TemplateFilesShepard push -u origin master
+    cd ~/42/Ghub/Lyph
+    git -C Templates/TemplateFilesUtu add -A
+    git -C Templates/TemplateFilesUtu commit -m "$*"
+    git -C Templates/TemplateFilesUtu push -u origin master
+    cd ~/42/Ghub/Lyph
+    git -C Templates/TemplateFilesAtsuko add -A
+    git -C Templates/TemplateFilesAtsuko commit -m "$*"
+    git -C Templates/TemplateFilesAtsuko push -u origin master
     fullgit $*
 }
 
