@@ -1,9 +1,12 @@
 [submodule "Templates/TemplateFilesAtsuko"]
 	path = Templates/TemplateFilesAtsuko
 	url = https://github.com/Lyfmeno/TemplateFilesAtsuko.git
+    branch = main
 [submodule "Templates/TemplateFilesUtu"]
 	path = Templates/TemplateFilesUtu
 	url = https://github.com/Lyfmeno/TemplateFilesUtu.git
+    branch = main
 [submodule "Templates/TemplateFilesShepard"]
 	path = Templates/TemplateFilesShepard
 	url = https://github.com/Lyfmeno/TemplateFilesShepard.git
+    branch = main

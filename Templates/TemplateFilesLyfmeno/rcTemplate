@@ -53,34 +53,36 @@ rsource()
 	fi
 }
 
-upsh()
+upshepard()
 {
-	oldir=$(echo $PWD)
-	cd $HOME/42/Ghub/Usefull/
-	rt
-	. $HOME/42/Ghub/Usefull/CreateAll.sh Y
-	if [ $? -eq 0 ]; then
-		echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED ${PEACH}----${NC}"
-	else
-		echo -e "${PEACH}---- Updating current RC ${RED}FAILED ${PEACH}----${NC}"
-	fi
-	cd "${oldir}"
+    cd ~/42/Ghub/Lyph
+    git -C Templates/TemplateFilesShepard add -A
+    git -C Templates/TemplateFilesShepard commit -m "$*"
+    git -C Templates/TemplateFilesShepard push origin master
 }
 
-gupsh()
+uputu()
 {
-	oldir=$(echo $PWD)
-	cd $HOME/42/Ghub/Usefull/
-	rt
-	. $HOME/42/Ghub/Usefull/CreateAll.sh
-	if [ $? -eq 0 ]; then
-		echo -e "${PEACH}---- Updating current RC ${GREEN}SUCCEEDED${PEACH} ----${NC}"
-		cd $HOME/42/Ghub/Usefull
-		fullgit $*
-	else
-		echo -e "${PEACH}---- Updating current RC ${RED}FAILED${PEACH} ----${NC}"
-	fi
-	cd "${oldir}"
+    cd ~/42/Ghub/Lyph
+    git -C Templates/TemplateFilesShepard add -A
+    git -C Templates/TemplateFilesShepard commit -m "$*"
+    git -C Templates/TemplateFilesShepard push origin master
+}
+
+upatsuko()
+{
+    cd ~/42/Ghub/Lyph
+    git -C Templates/TemplateFilesShepard add -A
+    git -C Templates/TemplateFilesShepard commit -m "$*"
+    git -C Templates/TemplateFilesShepard push origin master
+}
+
+upall()
+{
+    upshepard
+    uputu
+    upatsuko
+    fullgit $*
 }
 
 # 	Template Generation
@@ -201,7 +203,7 @@ gclyf()
 {
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 	printf ${ORANGE}
-	git clone "git@github.com:Lyfmeno/$1.git" --recursive
+	git clone --recursive "git@github.com:Lyfmeno/$1.git" 
 	printf ${NC}
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
