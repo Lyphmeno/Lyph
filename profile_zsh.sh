@@ -1,5 +1,4 @@
 #!/bin/zsh
-
 # 	SHOW MENU
 mysh=`echo $SHELL | cut -d/ -f3`
 # Function to change GitHub user information

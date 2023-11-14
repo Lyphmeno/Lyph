@@ -69,18 +69,15 @@ create_pull_request() {
     local REPO_OWNER=Lyfmeno
     local REPO_NAME=Lyph
     local BASE_BRANCH=main
-    local FEATURE_BRANCH=$BASE_BRANCH
 
 
     echo "Enter your GitHub username:"
     read GITHUB_USERNAME
     if [ "$GITHUB_USERNAME" != "Lyfmendo" ]; then
     get_github_credentials_and_title
-    curl -i -X POST \
-        -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" \
+    curl -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" \
         -H "Content-Type: application/json" \
-        -d "{\"title\":\"$PR_TITLE\", \"head\":\"$FEATURE_BRANCH\", \"base\":\"$BASE_BRANCH\", \"body\":\"Description of your pull request\"}" \
-        https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/pulls
+        -d "{\"title\":\"$PR_TITLE\", \"head\":\"$FEATURE_BRANCH\", \"base\":\"$BASE_BRANCH\"}" https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/pulls
     else
     echo "Skipping pull request creation for user Lyfmeno."
     fi
