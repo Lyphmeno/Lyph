@@ -17,10 +17,11 @@ GREEN='\033[1;32m'
 NC='\033[0m'
 mysh=`echo $SHELL | cut -d/ -f3`
 # ALIAS
-#   Basics
-alias pyp='python3 -m pip'
+#   Help
 alias lyph='declare -f'
 alias lypha='alias | grep'
+#   Basics
+alias pyp='python3 -m pip'
 alias pyt='rt; python3'
 alias rt='printf "\033c"'
 alias ll='ls -l --color=auto'
