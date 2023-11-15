@@ -8,15 +8,15 @@ The program should work on any `.rc` file type.
 Since I am using Neovim as my IDE there is a question about Homebrew (I only need it when I am at 42 School so don't mind it).
 
 This said the installation is quite simple, just run this :
-# Clone the repo
+### Clone the repo
 ```bash
     git clone --recursive https://github.com/Lyfmeno/Lyph.git 
 ```
-# Setup and chose profile
+### Setup and chose profile
 ```bash
     ./SETUP.sh
 ```
-# Update terminal (close reopen) or:
+### Update terminal (close reopen) or:
 First time using (depends on $SHELL)
 ```bash
     source ~/.bashrc
@@ -25,7 +25,7 @@ Else (the function will find )
 ```bash
     rsource
 ```
-# Update submodule
+### Update submodule
 ```bash
     git submodule update --init --recursive
 ```
