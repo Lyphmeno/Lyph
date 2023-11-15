@@ -26,6 +26,7 @@
         <code>git submodule update --init --recursive</code>
     </li>
   </ol>
+  <img src=".readmefiles/setupsh.gif" alt="Setup.sh">
   <h2>Function and Aliases description</h2>
   <p>I will not describe everyting but here are the important or complicated one</p>
     <h3>Aliases:</h3>
