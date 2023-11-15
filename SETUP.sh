@@ -10,10 +10,10 @@ touch ~/.templates/.makexcpp
 current_shell=$(basename "$SHELL")
 if [ "$current_shell" = "bash" ]; then
     echo "Executing Bash profile..."
-    bash profile_bash.sh
+    bash shell_profile/profile_bash.sh
 elif [ "$current_shell" = "zsh" ]; then
     echo "Executing Zsh profile..."
-    zsh profile_zsh.sh
+    zsh shell_profile/profile_zsh.sh
 else
     echo "Unsupported shell: $current_shell"
 fi

@@ -56,61 +56,110 @@ rsource()
 	fi
 }
 
-get_github_credentials_and_title() {
-    # Prompt for password without echoing it to the terminal
-    echo "Enter your GitHub password: " 
-    read -s GITHUB_PASSWORD
-
-    echo "Enter the pull request title: "
-    read PR_TITLE
+# 	Git
+gitset()
+{
+    show_menu
 }
 
-# Function to create a pull request, conditionally prompting based on the user
-create_pull_request() {
-    local REPO_OWNER=Lyfmeno
-    local REPO_NAME=Lyph
-    local BASE_BRANCH=main
-
-
-    echo "Enter your GitHub username:"
-    read GITHUB_USERNAME
-    if [ "$GITHUB_USERNAME" != "Lyfmendo" ]; then
-    get_github_credentials_and_title
-    curl -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" \
-        -H "Content-Type: application/json" \
-        -d "{\"title\":\"$PR_TITLE\", \"head\":\"$FEATURE_BRANCH\", \"base\":\"$BASE_BRANCH\"}" https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/pulls
-    else
-    echo "Skipping pull request creation for user Lyfmeno."
-    fi
+gclyf()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git clone --recursive "git@github.com:Lyfmeno/$1.git" 
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
 
-push_to_submodule() {
-    local submodule_path=$1
-    echo "Enter the commit message for $submodule_path:"
-    read commit_message
-    git -C "$submodule_path" add -A
-    git -C "$submodule_path" commit -m "$commit_message"
-    git -C "$submodule_path" push
+gitc()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git checkout $1
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
 
-upshepard() {
-    push_to_submodule "Templates/TemplateFilesShepard"
+gitbr()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git branch $*
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
 
-uputu() {
-    push_to_submodule "Templates/TemplateFilesUtu"
+gitbra()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git branch -a $*
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
 
-upatsuko() {
-    push_to_submodule "Templates/TemplateFilesAtsuko"
+llog()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git log | head -5 | tail -4 | head -3
+	printf ${PINK}
+	git log | head -5 | tail -1
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
 
-upall() {
-    push_to_submodule "Templates/TemplateFilesShepard"
-    push_to_submodule "Templates/TemplateFilesUtu"
-    push_to_submodule "Templates/TemplateFilesAtsuko"
-    create_pull_request
-    fullgit "$@"
+cmtr()
+{
+    rt
+	echo -e "${RED}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git log | head -5 | tail -4 | head -3
+	printf ${PINK}
+	git log | head -5 | tail -1
+	printf ${NC}
+	echo -e "${RED}------------------------------------------------------------${NC}"
+	git commit --amend -m "$*" > /dev/null
+	echo -e "${GREEN}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git log | head -5 | tail -4 | head -3
+	printf ${PINK}
+	git log | head -5 | tail -1
+	printf ${NC}
+	echo -e "${GREEN}------------------------------------------------------------${NC}"
+}
+
+cmt()
+{
+	echo -e "${PEACH}### ${ORANGE}Git setup -> ${GREEN}SUCCESS${NC}"
+	git add -A
+	if [ $? -eq 0 ]; then
+		echo -e "${PEACH}### ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
+		git commit -m "$*"
+		echo -e "${PEACH}### ${ORANGE}Commit -> ${GREEN}SUCCESS${NC}"
+	else
+		echo -e "${PEACH}### ${ORANGE}Add -> ${RED}FAIL${NC}"
+	fi
+}
+
+fullgit()
+{
+	echo -e "${PEACH}### ${ORANGE}Git setup -> ${GREEN}SUCCESS${NC}"
+	git add -A
+	if [ $? -eq 0 ]; then
+		echo -e "${PEACH}### ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
+		git commit -m "$*"
+		echo -e "${PEACH}### ${ORANGE}Commit -> ${GREEN}SUCCESS${NC}"
+		git push
+		if [ $? -eq 0 ]; then
+			echo -e "${PEACH}### ${ORANGE}Push -> ${GREEN}SUCCESS${NC}"
+			llog
+		else
+			echo -e "${PEACH}### ${ORANGE}Push -> ${RED}FAIL${NC}"
+		fi
+	else
+		echo -e "${PEACH}### ${ORANGE}Add -> ${RED}FAIL${NC}"
+	fi
 }
 
 # 	Template Generation
@@ -221,114 +270,7 @@ genbch()
 	done
 }
 
-# 	Git
-gitset()
-{
-    show_menu
-}
-
-gclyf()
-{
-	echo -e "${PEACH}------------------------------------------------------------${NC}"
-	printf ${ORANGE}
-	git clone --recursive "git@github.com:Lyfmeno/$1.git" 
-	printf ${NC}
-	echo -e "${PEACH}------------------------------------------------------------${NC}"
-}
-
-gitc()
-{
-	echo -e "${PEACH}------------------------------------------------------------${NC}"
-	printf ${ORANGE}
-	git checkout $1
-	printf ${NC}
-	echo -e "${PEACH}------------------------------------------------------------${NC}"
-}
-
-gitbr()
-{
-	echo -e "${PEACH}------------------------------------------------------------${NC}"
-	printf ${ORANGE}
-	git branch $*
-	printf ${NC}
-	echo -e "${PEACH}------------------------------------------------------------${NC}"
-}
-
-gitbra()
-{
-	echo -e "${PEACH}------------------------------------------------------------${NC}"
-	printf ${ORANGE}
-	git branch -a $*
-	printf ${NC}
-	echo -e "${PEACH}------------------------------------------------------------${NC}"
-}
-
-llog()
-{
-	echo -e "${PEACH}------------------------------------------------------------${NC}"
-	printf ${ORANGE}
-	git log | head -5 | tail -4 | head -3
-	printf ${PINK}
-	git log | head -5 | tail -1
-	printf ${NC}
-	echo -e "${PEACH}------------------------------------------------------------${NC}"
-}
-
-cmtr()
-{
-    rt
-	echo -e "${RED}------------------------------------------------------------${NC}"
-	printf ${ORANGE}
-	git log | head -5 | tail -4 | head -3
-	printf ${PINK}
-	git log | head -5 | tail -1
-	printf ${NC}
-	echo -e "${RED}------------------------------------------------------------${NC}"
-	git commit --amend -m "$*" > /dev/null
-	echo -e "${GREEN}------------------------------------------------------------${NC}"
-	printf ${ORANGE}
-	git log | head -5 | tail -4 | head -3
-	printf ${PINK}
-	git log | head -5 | tail -1
-	printf ${NC}
-	echo -e "${GREEN}------------------------------------------------------------${NC}"
-}
-
-cmt()
-{
-	echo -e "${PEACH}### ${ORANGE}Git setup -> ${GREEN}SUCCESS${NC}"
-	git add -A
-	if [ $? -eq 0 ]; then
-		echo -e "${PEACH}### ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
-		git commit -m "$*"
-		echo -e "${PEACH}### ${ORANGE}Commit -> ${GREEN}SUCCESS${NC}"
-	else
-		echo -e "${PEACH}### ${ORANGE}Add -> ${RED}FAIL${NC}"
-	fi
-}
-
-fullgit()
-{
-	echo -e "${PEACH}### ${ORANGE}Git setup -> ${GREEN}SUCCESS${NC}"
-	git add -A
-	if [ $? -eq 0 ]; then
-		echo -e "${PEACH}### ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
-		git commit -m "$*"
-		echo -e "${PEACH}### ${ORANGE}Commit -> ${GREEN}SUCCESS${NC}"
-		git push
-		if [ $? -eq 0 ]; then
-			echo -e "${PEACH}### ${ORANGE}Push -> ${GREEN}SUCCESS${NC}"
-			llog
-		else
-			echo -e "${PEACH}### ${ORANGE}Push -> ${RED}FAIL${NC}"
-		fi
-	else
-		echo -e "${PEACH}### ${ORANGE}Add -> ${RED}FAIL${NC}"
-	fi
-}
-
 # 	SHOW MENU
-# Function to change GitHub user information
 change_github_info()
 {
     local username=$1
@@ -338,7 +280,6 @@ change_github_info()
     git config --global user.email "$email"
 }
 
-# Function to get escape sequences for arrow keys
 get_arrow_sequence()
 {
     local key
@@ -349,7 +290,6 @@ get_arrow_sequence()
     echo "$key"
 }
 
-# Function to prompt for a new GitHub user
 prompt_for_new_user()
 {
     echo -n "Enter new GitHub username: "
@@ -362,7 +302,6 @@ prompt_for_new_user()
     echo -e "Email: \e[1;32m$new_email\e[0m"
 }
 
-# Function to display the menu
 show_menu()
 {
     local selected=2
