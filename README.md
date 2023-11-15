@@ -1,55 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Lyph:</a></h1>
+    <p>This repository is a save of all the aliases and functions I like to have on my linux. From git function to cpp or hpp generator, this file help me a lot when I need to setup a new machine.</p>
+    <p>The program should work on zsh and bash, don't hesitate to make an issue if you need more.</p>
+    <p>The code was updated with many profile (my friends and mine), and the ability to make a new profile for the github credentials.</p>
+    <p>Each profile except mine is a git submodule, I need to find a way to make it so they can change their profile without having rights on this project. I'm having trouble finding a way for them to pull request on a command line...</p>
+  <h2>Installation</h2>
+  <p>Follow theses step to install the project properly</p>
+  <ol>
+    <li>
+      <strong>Clone the repository: </strong>
+        <code>git clone --recursive https://github.com/Lyfmeno/Lyph.git </code>
+    </li>
+    <li>
+      <strong>Setup and chose profile: </strong>
+        <code>./SETUP.sh</code>
+    </li>
+    <li>
+      <strong>Update terminal: </strong>
+        <code>source ~/.bashrc</code> or <code>rsource</code>
+    </li>
+    <li>
+      <strong>Retrieve and update submodules: </strong>
+        <code>git submodule update --init --recursive</code>
+    </li>
+  </ol>
+  <h2>Function and Aliases description</h2>
+  <p>I will not describe everyting but here are the important or complicated one</p>
+    <h3>Aliases:</h3>
+        <ul>
+            <li><code>lyph</code> -> List all function/Show function requested</li>
+            <li><code>lypha</code> -> Show alias from argument</li>
+            <li><code>rt</code> -> Clear terminal</li>
+            <li><code>pyt</code> -> Clear and execute python program</li>
+            <li><code>dilf</code> -> Show difference between two folders</li>
+            <li><code>cpl</code> -> Compile gcc with WWW flags</li>
+            <li><code>gits</code> -> Show status of current git repository</li>
+            <li><code>mcl</code> -> Clear and make fclean</li>
+            <li><code>mre</code> -> Clear and make re</li>
+        </ul>
 
-# LYPH 
+</body>
+</html>
 
-This repository is a save of all the aliases and functions I like to have on my linux. From git function to cpp or hpp generator, this file help me a lot when I need to setup a new machine.\
-The program should work on any `.rc` file type.
-## Installation
-
-Since I am using Neovim as my IDE there is a question about Homebrew (I only need it when I am at 42 School so don't mind it).
-
-This said the installation is quite simple, just run this :
-### Clone the repo
-```bash
-    git clone --recursive https://github.com/Lyfmeno/Lyph.git 
-```
-### Setup and chose profile
-```bash
-    ./SETUP.sh
-```
-### Update terminal (close reopen) or:
-First time using (depends on $SHELL)
-```bash
-    source ~/.bashrc
-```
-Else (the function will find )
-```bash
-    rsource
-```
-### Update submodule
-```bash
-    git submodule update --init --recursive
-```
-
-The recursive option is very important since I allowed my friends to make their own templates !!!
-
-## Files
-
-The Template file contains everything I need :
-
-- `rcTemplate` is the template for the rc file at the root of your computer, it will REPLACE your `*.rc` file.
-- `basicCPP/basicHPP` are the templates used to generate cpp and hpp file with canonical form
-- `makexc/makexcpp` are the templates used to generate *Makefile* depending on language (_Fun little progress bar btw_)
-## Function Description
-### Edit
-Simple aliases to make it easier for me to navigate and change configuration files and stuff.
-### Gup
-Theses functions make it so when I change, for exemple, my `reTemplate` then it automatically update mine and push to my git the changes.
-### Makefile
-Generates makefile taking first argument as the name of the executable for `C` or `C++`.\
-If needed, put `./src/*` and `./inc/*` in the Makefile.
-### Gen
-Generates `.hpp/.cpp` as a class file.\
-First argument will define the name of the class and the canonical form will contain the right class name.
-### Git
-Easier git aliases with colors.\
-`fullgit()` will add/commit/push everything added or deleted on origin. Everything following the function in the command line will be the commit message.
