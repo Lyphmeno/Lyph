@@ -1,6 +1,6 @@
 #!/bin/zsh
 # 	SHOW MENU
-mysh=`echo $SHELL | cut -d/ -f3`
+mysh=$(basename "$SHELL")
 # Function to change GitHub user information
 change_github_info()
 {
