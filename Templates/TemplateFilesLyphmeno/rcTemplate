@@ -1,6 +1,6 @@
 #!/bin/sh
 #-----------------------------------------------------------------------------#
-#----------------------------------Lyfmeno------------------------------------#
+#---------------------------------Lyphmeno------------------------------------#
 #-----------------------------------------------------------------------------#
 export PATH="$HOME/.local/bin:$PATH"
 export LIBGL_ALWAYS_INDIRECT=1
@@ -66,7 +66,7 @@ gclyf()
 {
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 	printf ${ORANGE}
-	git clone --recursive "git@github.com:Lyfmeno/$1.git" 
+	git clone --recursive "git@github.com:Lyphmeno/$1.git" 
 	printf ${NC}
 	echo -e "${PEACH}------------------------------------------------------------${NC}"
 }
@@ -305,8 +305,8 @@ prompt_for_new_user()
 show_menu()
 {
     local selected=2
-    local option_names=("Lyfmeno" "ShuBei" "Shepard" "Atsuko" "NEW")
-    local github_usernames=("Lyfmeno" "ShuBei33" "Shepardinio" "maverqui" "NEW_GITHUB_USER")
+    local option_names=("Lyphmeno" "ShuBei" "Shepard" "Atsuko" "NEW")
+    local github_usernames=("Lyphmeno" "ShuBei33" "Shepardinio" "maverqui" "NEW_GITHUB_USER")
     local github_emails=("hugolevipro@gmail.com" "estoffel@student.42.fr" "mel-yand@student.42.fr" "maeverquin13@gmail.com" "newuser@example.com")
     local max_len=0
 

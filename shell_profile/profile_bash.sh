@@ -68,8 +68,8 @@ create_templates()
 show_menu()
 {
     local selected=1
-    local option_names=("Lyfmeno" "Utu" "Shepard" "Atsuko" "NEW")
-    local github_usernames=("Lyfmeno" "ShuBei33" "Shepardinio" "maverqui" "NEW_GITHUB_USER")
+    local option_names=("Lyphmeno" "Utu" "Shepard" "Atsuko" "NEW")
+    local github_usernames=("Lyphmeno" "ShuBei33" "Shepardinio" "maverqui" "NEW_GITHUB_USER")
     local github_emails=("hugolevipro@gmail.com" "estoffel@student.42.fr" "mel-yand@student.42.fr" "maeverquin13@gmail.com" "newuser@example.com")
     local max_len=0
 

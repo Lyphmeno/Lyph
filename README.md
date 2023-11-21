@@ -11,7 +11,7 @@
   <ol>
     <li>
       <strong>Clone the repository: </strong>
-        <code>git clone --recursive https://github.com/Lyfmeno/Lyph.git </code>
+        <code>git clone --recursive https://github.com/Lyphmeno/Lyph.git </code>
     </li>
     <li>
       <strong>Setup and chose profile: </strong>
