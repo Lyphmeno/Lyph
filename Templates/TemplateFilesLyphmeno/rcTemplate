@@ -59,7 +59,7 @@ rsource()
 
 asmld()
 {
-    rt; nasm -f elf "$*.s" && ld -m elf_i386 "$*.o"
+    rt; nasm -f elf64 "$*.s" && ld "$*.o"
 }
 
 # 	Git
