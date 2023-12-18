@@ -21,8 +21,6 @@ mysh=`echo $SHELL | cut -d/ -f3`
 alias lyph='declare -f'
 alias lypha='alias | grep'
 #   Basics
-alias pyp='python3 -m pip'
-alias pyt='rt; python3'
 alias rt='printf "\033c"'
 alias ll='ls -l --color=auto'
 alias l='ls -la --color=auto'
@@ -31,6 +29,9 @@ alias grademe='bash -c "$(curl https://grademe.fr)"'
 #   Compile
 alias cpl='gcc -Wall -Wextra -Werror -g'
 alias vgrind='valgrind --leak-check=full --show-leak-kinds=all'
+alias nsm='rt; nasm -f elf'
+alias pyp='python3 -m pip'
+alias pyt='rt; python3'
 #   Git
 alias gits='git fetch origin; git status'
 alias gitl='git log'
@@ -54,6 +55,11 @@ rsource()
 			bind -f ~/.inputrc
 		fi
 	fi
+}
+
+asmld()
+{
+    rt; nasm -f elf "$*.s" && ld -m elf_i386 "$*.o"
 }
 
 # 	Git
