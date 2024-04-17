@@ -15,7 +15,7 @@ PEACH='\033[38;5;223m\e[1m'
 YELLOW='\033[38;5;226m\e[1m'
 GREEN='\033[1;32m'
 NC='\033[0m'
-mysh=`echo $SHELL | cut -d/ -f3`
+mysh=`echo "$SHELL" | awk -F '/' '{print $NF}'`
 # ALIAS
 #   Help
 alias lyph='declare -f'
@@ -274,6 +274,23 @@ genbch()
 		gencpp $name
 		genhpp $name
 	done
+}
+#	OPENVPN
+ovpn()
+{
+	local configFile=$1
+
+	sudo openvpn --config "$configFile" --daemon 
+}
+
+lvpn()
+{
+	ps aux | grep openvpn
+}
+
+dvpn()
+{
+	sudo killall openvpn
 }
 
 # 	SHOW MENU
