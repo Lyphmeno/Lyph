@@ -26,6 +26,7 @@ alias ll='ls -l --color=auto'
 alias l='ls -la --color=auto'
 alias dilf='diff -r'
 alias grademe='bash -c "$(curl https://grademe.fr)"'
+alias pcat='pygmentize -g'
 #   Compile
 alias cpl='gcc -Wall -Wextra -Werror -g'
 alias vgrind='valgrind --leak-check=full --show-leak-kinds=all'
