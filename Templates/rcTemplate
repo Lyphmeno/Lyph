@@ -1,0 +1,185 @@
+#!/bin/sh
+export PATH="$HOME/.local/bin:$PATH"
+export LIBGL_ALWAYS_INDIRECT=1
+# COLORS
+RED='\033[38:5;31m\033[5m'
+CYAN='\033[0;36m'
+BLUE='\033[0;34m'
+ORANGE='\033[38;5;209m\e[1m'
+PURPLE='\033[38;5;207m\e[1m'
+PINK='\033[38;5;204m\e[1m'
+PEACH='\033[38;5;223m\e[1m'
+YELLOW='\033[38;5;226m\e[1m'
+GREEN='\033[1;32m'
+NC='\033[0m'
+mysh=`echo "$SHELL" | awk -F '/' '{print $NF}'`
+# ALIAS
+unalias -a 2>/dev/null
+#   Help
+alias lyph='declare -f'
+alias lypha='alias | grep'
+#   Basics
+alias rt='printf "\033c"'
+alias ll='ls -l --color=auto'
+alias l='ls -la --color=auto'
+alias grademe='bash -c "$(curl https://grademe.fr)"'
+#   Compile
+alias cpl='gcc -Wall -Wextra -Werror -g'
+alias vgrind='valgrind --leak-check=full --show-leak-kinds=all'
+alias pyp='python3 -m pip'
+alias pyt='rt; python3'
+#   Git
+alias gits='git fetch origin; git status'
+alias gitl='git log'
+#   Makefile
+alias mcl='rt; make fclean'
+alias mre='rt; make re'
+# FUNCTIONS
+#   Basic
+flk()
+{
+	#pip install flake8
+	rt
+	flake8 .
+}
+
+rsource()
+{
+	source ~/."$mysh"rc
+	if [ ! -e ~/.inputrc ]; then
+		if [ $mysh = "bash" ]; then
+			bind -f ~/.inputrc
+		fi
+	fi
+}
+
+nsm()
+{
+  rt
+  for f in "$@"; do
+      command nasm -f elf64 "$f" -o "${f%.s}.o"
+  done
+}
+
+# 	Git
+gitset()
+{
+    show_menu
+}
+
+gclyf()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git clone "git@github.com:Lyphmeno/$1.git" 
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+}
+
+gitc()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git checkout $1
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+}
+
+gitbr()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git branch $*
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+}
+
+gitbra()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git branch -a $*
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+}
+
+llog()
+{
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git log | head -5 | tail -4 | head -3
+	printf ${PINK}
+	git log | head -5 | tail -1
+	printf ${NC}
+	echo -e "${PEACH}------------------------------------------------------------${NC}"
+}
+
+cmtr()
+{
+    rt
+	echo -e "${RED}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git log | head -5 | tail -4 | head -3
+	printf ${PINK}
+	git log | head -5 | tail -1
+	printf ${NC}
+	echo -e "${RED}------------------------------------------------------------${NC}"
+	git commit --amend -m "$*" > /dev/null
+	echo -e "${GREEN}------------------------------------------------------------${NC}"
+	printf ${ORANGE}
+	git log | head -5 | tail -4 | head -3
+	printf ${PINK}
+	git log | head -5 | tail -1
+	printf ${NC}
+	echo -e "${GREEN}------------------------------------------------------------${NC}"
+}
+
+cmt()
+{
+	echo -e "${PEACH}### ${ORANGE}Git setup -> ${GREEN}SUCCESS${NC}"
+	git add -A
+	if [ $? -eq 0 ]; then
+		echo -e "${PEACH}### ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
+		git commit -m "$*"
+		echo -e "${PEACH}### ${ORANGE}Commit -> ${GREEN}SUCCESS${NC}"
+	else
+		echo -e "${PEACH}### ${ORANGE}Add -> ${RED}FAIL${NC}"
+	fi
+}
+
+fullgit()
+{
+	echo -e "${PEACH}### ${ORANGE}Git setup -> ${GREEN}SUCCESS${NC}"
+	git add -A
+	if [ $? -eq 0 ]; then
+		echo -e "${PEACH}### ${ORANGE}Add -> ${GREEN}SUCCESS${NC}"
+		git commit -m "$*"
+		echo -e "${PEACH}### ${ORANGE}Commit -> ${GREEN}SUCCESS${NC}"
+		git push
+		if [ $? -eq 0 ]; then
+			echo -e "${PEACH}### ${ORANGE}Push -> ${GREEN}SUCCESS${NC}"
+			llog
+		else
+			echo -e "${PEACH}### ${ORANGE}Push -> ${RED}FAIL${NC}"
+		fi
+	else
+		echo -e "${PEACH}### ${ORANGE}Add -> ${RED}FAIL${NC}"
+	fi
+}
+
+#	OPENVPN
+ovpn()
+{
+	local configFile=$1
+	sudo openvpn --config "$configFile" --daemon 
+}
+
+lvpn()
+{
+	ps aux | grep openvpn
+}
+
+dvpn()
+{
+	sudo killall openvpn
+}
