@@ -29,9 +29,23 @@ apply_rc_template() {
     cat "$RC_TEMPLATE" > "$TARGET_RC"
     echo "Updated $TARGET_RC from rcTemplate."
 
-    # Optionnel : gestion basique de ~/.inputrc (une seule fois)
-    if [ ! -e "$HOME/.inputrc" ]; then
-        echo '$include /etc/inputrc' > "$HOME/.inputrc"
+    if [ "$current_shell" = "bash" ]; then
+        if [ ! -f "$RC_INPUT" ]; then
+            echo "Error: rcinput is not found in $TEMPLATES_DIR" >&2
+            exit 1
+        fi
+
+        if [ ! -e "$HOME/.inputrc" ]; then
+            cp "$RC_INPUT" "$HOME/.inputrc" || {
+                echo "Error: could not install $HOME/.inputrc" >&2
+                exit 1
+            }
+            echo "Installed Bash Readline settings in $HOME/.inputrc."
+        else
+            echo "Keeping existing $HOME/.inputrc."
+        fi
+    elif [ "$current_shell" = "zsh" ]; then
+        echo "Skipping rcinput: it configures Bash Readline, not Zsh."
     fi
 }
 
